@@ -1,68 +1,80 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './index.css';
 
+//components
+import Header from './components/Header';
+import Filter from './components/Filter';
+import Counter from './components/Counter';
+import Invitees from './components/Invitees';
+
+let people = [
+  {
+    name: "Shehan",
+    confirmed : true
+  },
+  {
+    name: "Mike",
+    confirmed : false
+  },
+  {
+    name: "Craig",
+    confirmed : true
+  },
+  {
+    name: "Alena",
+    confirmed : true
+  },
+  {
+    name: "Andrew",
+    confirmed : true
+  }
+];
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      Invitees : [],
+      input :''
+    }
+
+    this.onTypeChange = this.onTypeChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({
+      Invitees: people,
+    });
+  }
+
+  onTypeChange(event){
+    this.setState({
+      input : event.target.value
+    });
+  }
+
+  onFormSubmit(event){
+    event.preventDefault();
+    console.log(this.state.input);
+    this.state.Invitees.push({
+      name : this.state.input,
+      confirmed : false
+    });
+    this.setState(this.state);
+    this.setState({
+      input : ""
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>RSVP</h1>
-          <p>A Treehouse App</p>
-          <form>
-              <input type="text" value="Safia" placeholder="Invite Someone"/>
-              <button type="submit" name="submit" value="submit">Submit</button>
-          </form>
-        </header>
+        <Header input={this.state.input} onTypeChange={this.onTypeChange} onSubmit={this.onFormSubmit}/>
         <div className="main">
-          <div>
-            <h2>Invitees</h2>
-            <label>
-              <input type="checkbox"/> Hide those who haven't responded
-            </label>
-          </div>
-          <table className="counter">
-            <tbody>
-              <tr>
-                <td>Attending:</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Unconfirmed:</td>
-                <td>1</td>
-              </tr>
-              <tr>
-                <td>Total:</td>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table>
-          <ul>
-            <li className="pending"><span>Safia</span></li>
-            <li className="responded"><span>Iver</span>
-              <label>
-                <input type="checkbox" checked/> Confirmed
-              </label>
-              <button>edit</button>
-              <button>remove</button>
-            </li>
-            <li className="responded">
-              <span>Corrina</span>
-              <label>
-                <input type="checkbox" checked/> Confirmed
-              </label>
-              <button>edit</button>
-              <button>remove</button>
-            </li>
-            <li>
-              <span>Joel</span>
-              <label>
-                <input type="checkbox"/> Confirmed
-              </label>
-              <button>edit</button>
-              <button>remove</button>
-            </li>
-          </ul>
+          <Filter/>
+          <Counter/>
+          <Invitees input={this.state.input} Invitees={this.state.Invitees}/>
         </div>
       </div>
     );
