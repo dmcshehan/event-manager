@@ -86,6 +86,9 @@ ul li {
 button {
   cursor: pointer;
 }
+button.remove{
+  background-color: #f3734a!important
+}
 
 input,
 button {
@@ -136,11 +139,11 @@ li input[type=text]:first-child {
 }
 
 li button {
-  font-size: .78em;
+  font-size: 1em;
+  padding: .5em .7em;
   margin-top: 1.65em;
   margin-right: .4em;
   border-radius: .3em;
-  padding: .4em .6em;
   color: white;
   background: #58b7cd;
 }

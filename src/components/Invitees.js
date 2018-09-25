@@ -1,25 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RespondedInvitee from './RespondedInvitee';
+import Invitee from './Invitee';
 
 
 function Invitees (props){
+
   return(
     <ul>
       {(props.input) !== '' ?  <li className="pending"><span>{props.input}</span></li>: null}
 
-      {props.Invitees.map(function(Invitee){
-        return <RespondedInvitee name={Invitee.name} confirmed={Invitee.confirmed}/>
+      {props.Invitees.filter(Invitee => !props.isFiltered || Invitee.confirmed ).map(function(singleInvitee,index){
+        return <Invitee
+                key={singleInvitee.id}
+                name={singleInvitee.name}
+                isEditing={singleInvitee.isEditing}
+                onEdit = {function(){
+                  props.onEdit(index)
+                }}
+                onRemove={function(){
+                  props.onRemove(index)
+                }}
+                onChange={function(newName){
+                  props.onChange(newName,index)
+                }}
+                confirmed={singleInvitee.confirmed}
+                onConfirmChange={function(){
+                  props.onConfirmChange(index)
+                }}/>
       })}
-
-      <li>
-        <span>Joel</span>
-        <label>
-          <input type="checkbox"/> Confirmed
-        </label>
-        <button>edit</button>
-        <button>remove</button>
-      </li>
     </ul>
   );
 }

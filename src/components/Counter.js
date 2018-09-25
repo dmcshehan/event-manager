@@ -2,20 +2,23 @@ import React from 'react';
 
 
 function Counter (props){
+  let numOfInvitees = props.Invitees.length;
+  let confirmedNum = props.Invitees.filter(Invitee => Invitee.confirmed === true).length;
+
   return(
     <table className="counter">
       <tbody>
         <tr>
           <td>Attending:</td>
-          <td>2</td>
+          <td>{confirmedNum}</td>
         </tr>
         <tr>
           <td>Unconfirmed:</td>
-          <td>1</td>
+          <td>{numOfInvitees - confirmedNum}</td>
         </tr>
         <tr>
           <td>Total:</td>
-          <td>3</td>
+          <td>{numOfInvitees}</td>
         </tr>
       </tbody>
     </table>

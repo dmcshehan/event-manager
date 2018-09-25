@@ -6,7 +6,7 @@ function Filter (props){
     <div>
       <h2>Invitees</h2>
       <label>
-        <input type="checkbox"/> Hide those who haven't responded
+        <input type="checkbox" onChange={props.onFilter}/> Hide those who haven't responded
       </label>
     </div>
   );
