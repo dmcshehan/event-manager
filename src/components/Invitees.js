@@ -34,6 +34,14 @@ function Invitees (props){
 
 Invitees.propTypes = {
   Invitees : PropTypes.array.isRequired,
+  isFiltered : PropTypes.bool.isRequired,
+  input:PropTypes.string.isRequired,
+  onEdit:PropTypes.func.isRequired,
+  onRemove:PropTypes.func.isRequired,
+  onChange:PropTypes.func.isRequired,
+  onConfirmChange:PropTypes.func.isRequired,
+
 }
+
 
 export default Invitees;

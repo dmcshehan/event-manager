@@ -11,7 +11,8 @@ function InviteeName (props){
 }
 
 InviteeName.propTypes = {
-
+  onChange:PropTypes.func.isRequired,
+  isEditing:PropTypes.bool.isRequired
 }
 
 export default InviteeName;
