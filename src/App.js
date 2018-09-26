@@ -86,10 +86,10 @@ class App extends Component {
     }
   }
 
-  toggleInviteeProppertyAt(property,indexToChange){
+  toggleInviteeProppertyAt(property,id){
     this.setState({
-       Invitees : this.state.Invitees.map((Invitee,index)=>{
-         if(index === indexToChange){
+       Invitees : this.state.Invitees.map((Invitee)=>{
+         if(id === Invitee.id){
            return {
              ...Invitee,
              [property] : !Invitee[property]
@@ -101,12 +101,12 @@ class App extends Component {
 
 }
 
-onConfirmChange(indexToChange){
-  this.toggleInviteeProppertyAt('confirmed',indexToChange);
+onConfirmChange(id){
+  this.toggleInviteeProppertyAt('confirmed',id);
 }
 
-onEditChange(indexToChange){
-  this.toggleInviteeProppertyAt('isEditing',indexToChange);
+onEditChange(id){
+  this.toggleInviteeProppertyAt('isEditing',id);
 }
 
 
@@ -116,11 +116,11 @@ onEditChange(indexToChange){
     });
   }
 
-  onInviteeNameChange(newName,indexToChange){
+  onInviteeNameChange(newName,id){
 
     this.setState({
-       Invitees : this.state.Invitees.map((Invitee,index)=>{
-         if(index === indexToChange){
+       Invitees : this.state.Invitees.map((Invitee)=>{
+         if(id === Invitee.id){
            return {
              ...Invitee,
               name : newName
@@ -132,9 +132,13 @@ onEditChange(indexToChange){
 
   }
 
-  onRemove(indexToRemove){
-    this.state.Invitees.splice(indexToRemove,1);
-    this.setState(this.state);
+  onRemove(id){
+    this.setState({
+      Invitees :   this.state.Invitees.filter(Invitee => {
+          return id !== Invitee.id;
+        }),
+    });
+
   }
 
 
@@ -146,13 +150,13 @@ onEditChange(indexToChange){
           <Filter onFilter={this.onFilter}/>
           <Counter Invitees={this.state.Invitees}/>
           <Invitees
-            onRemove={function(index){this.onRemove(index)}.bind(this)}
+            onRemove={function(id){this.onRemove(id)}.bind(this)}
             isFiltered={this.state.isFiltered}
             input={this.state.input}
             Invitees={this.state.Invitees}
-            onConfirmChange={function(index){this.onConfirmChange(index)}.bind(this)}
-            onChange={function(newName,index){this.onInviteeNameChange(newName,index)}.bind(this)}
-            onEdit={function(index){this.onEditChange(index)}.bind(this)}/>
+            onConfirmChange={function(id){this.onConfirmChange(id)}.bind(this)}
+            onChange={function(newName,id){this.onInviteeNameChange(newName,id)}.bind(this)}
+            onEdit={function(id){this.onEditChange(id)}.bind(this)}/>
         </div>
       </div>
     );

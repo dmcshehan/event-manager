@@ -11,21 +11,21 @@ function Invitees (props){
 
       {props.Invitees.filter(Invitee => !props.isFiltered || Invitee.confirmed ).map(function(singleInvitee,index){
         return <Invitee
-                key={singleInvitee.id}
+                key={index}
                 name={singleInvitee.name}
                 isEditing={singleInvitee.isEditing}
                 onEdit = {function(){
-                  props.onEdit(index)
+                  props.onEdit(singleInvitee.id)
                 }}
                 onRemove={function(){
-                  props.onRemove(index)
+                  props.onRemove(singleInvitee.id)
                 }}
                 onChange={function(newName){
-                  props.onChange(newName,index)
+                  props.onChange(newName,singleInvitee.id)
                 }}
                 confirmed={singleInvitee.confirmed}
                 onConfirmChange={function(){
-                  props.onConfirmChange(index)
+                  props.onConfirmChange(singleInvitee.id)
                 }}/>
       })}
     </ul>
