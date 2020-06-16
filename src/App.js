@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 //components
-import Header from './components/Header';
-import Filter from './components/Filter';
-import Counter from './components/Counter';
-import Invitees from './components/Invitees';
+import Header from './components/Header/Header';
+import Filter from './components/Filter/Filter';
+import Counter from './components/Counter/Counter';
+import Invitees from './components/Invitees/Invitees';
 
 let people = [
 	{
