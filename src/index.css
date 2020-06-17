@@ -86,9 +86,6 @@ ul li {
 button {
 	cursor: pointer;
 }
-button.remove {
-	background-color: #f3734a !important;
-}
 
 input,
 button {
