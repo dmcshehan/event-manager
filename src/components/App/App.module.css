@@ -1,4 +1,6 @@
 .app {
+  position: relative;
+
   max-width: 80%;
   margin: 2.5em auto;
   border-radius: 0.35em;
@@ -6,4 +8,6 @@
   box-shadow: 0 0 26px rgba(0, 0, 0, 0.13);
 
   overflow: hidden;
+
+  min-height: 100vh;
 }

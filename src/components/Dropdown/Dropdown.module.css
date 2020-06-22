@@ -1,0 +1,40 @@
+.dropDown {
+  position: absolute;
+  right: 0.75rem;
+  top: calc(70px + 0.5rem);
+  z-index: 999;
+
+  width: 300px;
+  padding: 0 0 0.5rem;
+
+  background-color: white;
+}
+
+.item {
+  padding: 0.5rem;
+}
+
+.avaratFigure {
+  width: 80px;
+  margin: 20px auto;
+}
+
+.displayName {
+  color: #202124;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.email {
+  margin-top: -3px;
+  font-size: 14px;
+}
+
+.signOutBtn {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+
+  font-weight: 500;
+}

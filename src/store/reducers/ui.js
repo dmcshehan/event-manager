@@ -1,19 +1,16 @@
 import produce from "immer";
-import * as userActionTypes from "../actionTypes/user";
+import * as uiActionTypes from "../actionTypes/ui";
 
 const initialState = {
-  user: null,
+  dropdownIsOpen: false,
 };
 
 export default (state = initialState, action) =>
   produce(state, (draftState) => {
     const { type, payload } = action;
     switch (type) {
-      case userActionTypes.USER_LOGIN_SUCCESS:
+      case uiActionTypes.DROPDOWN_TOGGLE:
         draftState.user = payload.user;
-        break;
-      case userActionTypes.USER_LOGOUT_SUCCESS:
-        draftState.user = null;
         break;
       default:
         break;

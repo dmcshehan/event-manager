@@ -9,4 +9,10 @@ function userLoginSuccess(user) {
   };
 }
 
-export { userLoginSuccess };
+function userLogoutSuccess() {
+  return {
+    type: userActionTypes.USER_LOGOUT_SUCCESS,
+  };
+}
+
+export { userLoginSuccess, userLogoutSuccess };
