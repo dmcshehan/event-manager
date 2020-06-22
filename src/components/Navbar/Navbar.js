@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import classNames from "./Navbar.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
-import DropDown from "../Dropdown/Dropdown";
+import Logo from "../Logo/Logo";
 
 export default function Navbar({ toggleDropdown, isDropdownOpen }) {
   const userState = useSelector((state) => state.user);
@@ -14,7 +14,7 @@ export default function Navbar({ toggleDropdown, isDropdownOpen }) {
       <nav className='navbar' role='navigation' aria-label='main navigation'>
         <div className='navbar-brand'>
           <Link className='navbar-item' to='/'>
-            RSVP
+            <Logo />
           </Link>
 
           <a
