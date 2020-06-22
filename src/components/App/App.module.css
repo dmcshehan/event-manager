@@ -1,0 +1,9 @@
+.app {
+  max-width: 80%;
+  margin: 2.5em auto;
+  border-radius: 0.35em;
+  background: #fcfcfc;
+  box-shadow: 0 0 26px rgba(0, 0, 0, 0.13);
+
+  overflow: hidden;
+}
