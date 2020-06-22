@@ -1,38 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "./Navbar.module.css";
-import { useSelector, useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 import Logo from "../Logo/Logo";
+import Navbar from "react-bulma-components/lib/components/navbar";
 
-export default function Navbar({ toggleDropdown, isDropdownOpen }) {
+const { Brand, Burger, Menu, Container, Item } = Navbar;
+
+export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
 
   return (
-    <>
-      <nav className='navbar' role='navigation' aria-label='main navigation'>
-        <div className='navbar-brand'>
-          <Link className='navbar-item' to='/'>
-            <Logo />
-          </Link>
+    <Navbar className='navbar' role='navigation' aria-label='main navigation'>
+      <Brand>
+        <Link className='navbar-item' to='/'>
+          <Logo />
+        </Link>
+        <Burger />
+      </Brand>
 
-          <a
-            role='button'
-            className='navbar-burger burger'
-            aria-label='menu'
-            aria-expanded='false'
-            data-target='navbarBasicExample'
-          >
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
-            <span aria-hidden='true'></span>
-          </a>
-        </div>
-        <div id='mainNav' className='navbar-menu'>
-          <div className='navbar-end'>
-            <div className='navbar-item'>
-              {user ? (
+      <Menu>
+        <Container position='end'>
+          <div className='navbar-item'>
+            {user ? (
+              <Item>
                 <figure className='image is-48x48'>
                   <div
                     onClick={toggleDropdown}
@@ -44,15 +36,15 @@ export default function Navbar({ toggleDropdown, isDropdownOpen }) {
                     }}
                   ></div>
                 </figure>
-              ) : (
-                <Link to='/signin' className='button is-primary'>
-                  Login
-                </Link>
-              )}
-            </div>
+              </Item>
+            ) : (
+              <Link to='/signin' className='button is-primary'>
+                Login
+              </Link>
+            )}
           </div>
-        </div>
-      </nav>
-    </>
+        </Container>
+      </Menu>
+    </Navbar>
   );
 }

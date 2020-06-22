@@ -11,6 +11,7 @@ import Header from "../Header/Header";
 import NavBar from "../Navbar/Navbar";
 import DropDown from "../Dropdown/Dropdown";
 import Signin from "../Signin/Signin";
+import Dashboard from "../Dashboard/Dashboard";
 
 //Actioncreators
 import { userLoginSuccess } from "../../store/actionCreators/user";
@@ -50,6 +51,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path='/signin' component={Signin}></Route>
+          <Route exact path='/dashboard' component={Dashboard}></Route>
         </Switch>
       </div>
     </Router>
