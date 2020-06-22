@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 //actioncreators
 import { userLogoutSuccess } from "../../store/actionCreators/user";
 
-export default function Dropdown({ toggleDropdown }) {
+export default function Dropdown({ closeDropDown }) {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const { user } = userState;
@@ -16,7 +16,7 @@ export default function Dropdown({ toggleDropdown }) {
       .auth()
       .signOut()
       .then(function () {
-        toggleDropdown(false);
+        closeDropDown();
         dispatch(userLogoutSuccess());
       })
       .catch(function (error) {

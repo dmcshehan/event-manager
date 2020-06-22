@@ -5,3 +5,7 @@
   height: 100%;
   cursor: pointer;
 }
+
+.border {
+  border: 5px solid rgba(0, 0, 0, 0.3);
+}

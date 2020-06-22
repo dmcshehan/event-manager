@@ -30,18 +30,23 @@ export default function App() {
     });
   });
 
-  function toggleDropdown(status) {
-    if (status) {
-      return setDropdownState(status);
-    }
+  function toggleDropdown(e) {
+    console.log(e);
     setDropdownState(!isDropdownOpen);
+  }
+
+  function closeDropDown() {
+    setDropdownState(false);
   }
 
   return (
     <Router>
       <div className={classNames.app}>
-        <NavBar toggleDropdown={toggleDropdown} />
-        {isDropdownOpen ? <DropDown toggleDropdown={toggleDropdown} /> : null}
+        <NavBar
+          toggleDropdown={toggleDropdown}
+          isDropdownOpen={isDropdownOpen}
+        />
+        {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
         <Header />
         <Switch>
           <Route exact path='/signin' component={Signin}></Route>

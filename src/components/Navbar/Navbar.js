@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import DropDown from "../Dropdown/Dropdown";
 
-export default function Navbar({ toggleDropdown }) {
+export default function Navbar({ toggleDropdown, isDropdownOpen }) {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
 
@@ -36,7 +36,9 @@ export default function Navbar({ toggleDropdown }) {
                 <figure className='image is-48x48'>
                   <div
                     onClick={toggleDropdown}
-                    className={classNames.imgBtn}
+                    className={`${classNames.imgBtn} ${
+                      isDropdownOpen ? classNames.border : ""
+                    }`}
                     style={{
                       backgroundImage: `url(${user.photoURL})`,
                     }}
