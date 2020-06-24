@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import firebase from "../../auth/firebase";
 import { useSelector, useDispatch } from "react-redux";
-//import { createSelector } from "reselect";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import classNames from "./App.module.css";
@@ -12,14 +11,19 @@ import NavBar from "../Navbar/Navbar";
 import DropDown from "../Dropdown/Dropdown";
 import Signin from "../Signin/Signin";
 import Dashboard from "../Dashboard/Dashboard";
+import EventModal from "../EventModal/EventModal";
+import EventForm from "../EventForm/EventForm";
 
 //Actioncreators
 import { userLoginSuccess } from "../../store/actionCreators/user";
 
 export default function App() {
   const [isDropdownOpen, setDropdownState] = useState(false);
+  const [isModelOpen, setModelOpen] = useState(false);
+
   const userState = useSelector((state) => state.user);
   const { user } = userState;
+  const isLoggedIn = user ? true : false;
 
   const dispatch = useDispatch();
 
@@ -32,7 +36,6 @@ export default function App() {
   });
 
   function toggleDropdown(e) {
-    console.log(e);
     setDropdownState(!isDropdownOpen);
   }
 
@@ -40,18 +43,33 @@ export default function App() {
     setDropdownState(false);
   }
 
+  function openModal() {
+    setModelOpen(true);
+  }
+  function closeModal() {
+    setModelOpen(false);
+  }
+
   return (
     <Router>
       <div className={classNames.app}>
+        <EventModal onModalClose={closeModal} show={isModelOpen} />
+
         <NavBar
           toggleDropdown={toggleDropdown}
           isDropdownOpen={isDropdownOpen}
         />
         {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
-        <Header />
+        {!isLoggedIn ? <Header /> : null}
         <Switch>
+          <Route
+            exact
+            path='/dashboard'
+            render={() => {
+              return <Dashboard onAddEventBtnClick={openModal} />;
+            }}
+          ></Route>
           <Route exact path='/signin' component={Signin}></Route>
-          <Route exact path='/dashboard' component={Dashboard}></Route>
         </Switch>
       </div>
     </Router>

@@ -4,12 +4,13 @@ import firebase from "../../auth/firebase";
 import { Redirect } from "react-router-dom";
 import googleProvider from "../../auth/providers/google";
 
+import Button from "react-bulma-components/lib/components/button";
+
 import classNames from "./Signin.module.css";
 
 export default function Signup() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
-  console.log(user);
 
   function handleSignup() {
     firebase
@@ -29,15 +30,15 @@ export default function Signup() {
         <Redirect to='/dashboard' />
       ) : (
         <div className={classNames.signin}>
-          <button
-            className={`button ${classNames.googleBtn} has-text-white`}
+          <Button
+            className={`button has-text-white ${classNames.googleBtn}`}
             onClick={handleSignup}
           >
             <span className='icon'>
               <i className='fab fa-google'></i>
             </span>
             <span>Sign In With Google</span>
-          </button>
+          </Button>
         </div>
       )}
     </>

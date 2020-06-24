@@ -1,0 +1,12 @@
+.eventModal {
+  min-width: 500px;
+  border-radius: 5px;
+}
+
+.submitButton {
+  width: 100%;
+}
+
+.footer {
+  padding: 20px;
+}

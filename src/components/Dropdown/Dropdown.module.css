@@ -1,11 +1,11 @@
 .dropDown {
   position: absolute;
-  right: 0.75rem;
-  top: calc(70px + 0.5rem);
+  right: 32px;
+  top: 80px;
   z-index: 999;
 
   width: 300px;
-  padding: 0 0 0.5rem;
+  padding: 0 0 20px !important;
 
   background-color: white;
 }
@@ -31,9 +31,10 @@
 }
 
 .signOutBtn {
-  display: block;
+  display: block !important;
+
   width: 70%;
-  margin: 0 auto;
+  margin: 20px auto 0;
   text-align: center;
 
   font-weight: 500;

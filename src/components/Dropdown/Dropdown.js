@@ -3,6 +3,9 @@ import firebase from "../../auth/firebase";
 import classNames from "./Dropdown.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
+import Box from "react-bulma-components/lib/components/box";
+import Button from "react-bulma-components/lib/components/button";
+import Image from "react-bulma-components/lib/components/image";
 //actioncreators
 import { userLogoutSuccess } from "../../store/actionCreators/user";
 
@@ -25,20 +28,18 @@ export default function Dropdown({ closeDropDown }) {
   }
 
   return (
-    <div className={`${classNames.dropDown} box`}>
+    <Box className={classNames.dropDown}>
       <figure className={`image ${classNames.avaratFigure}`}>
-        <img className='is-rounded' src={user.photoURL} alt='User Avatar' />
+        <Image rounded={true} src={user.photoURL} alt='User Avatar' />
       </figure>
       <p className={`${classNames.displayName} has-text-centered`}>
         {user.displayName}
       </p>
       <p className={`${classNames.email} has-text-centered`}>{user.email}</p>
       <hr className='navbar-divider'></hr>
-      <div className={classNames.item}>
-        <button className={`${classNames.signOutBtn} button`} onClick={logout}>
-          Sign out
-        </button>
-      </div>
-    </div>
+      <Button className={classNames.signOutBtn} onClick={logout}>
+        Sign out
+      </Button>
+    </Box>
   );
 }

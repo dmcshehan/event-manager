@@ -4,6 +4,7 @@ import classNames from "./Navbar.module.css";
 import { useSelector } from "react-redux";
 import Logo from "../Logo/Logo";
 import Navbar from "react-bulma-components/lib/components/navbar";
+import GridContainer from "react-bulma-components/lib/components/container";
 
 const { Brand, Burger, Menu, Container, Item } = Navbar;
 
@@ -12,19 +13,19 @@ export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
   const { user } = userState;
 
   return (
-    <Navbar className='navbar' role='navigation' aria-label='main navigation'>
-      <Brand>
-        <Link className='navbar-item' to='/'>
-          <Logo />
-        </Link>
-        <Burger />
-      </Brand>
+    <GridContainer fluid className={classNames.navbarContainer}>
+      <Navbar>
+        <Brand>
+          <Link className='navbar-item' to='/'>
+            <Logo />
+          </Link>
+          <Burger />
+        </Brand>
 
-      <Menu>
-        <Container position='end'>
-          <div className='navbar-item'>
-            {user ? (
-              <Item>
+        <Menu>
+          <Container position='end'>
+            <div className='navbar-item'>
+              {user ? (
                 <figure className='image is-48x48'>
                   <div
                     onClick={toggleDropdown}
@@ -36,15 +37,15 @@ export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
                     }}
                   ></div>
                 </figure>
-              </Item>
-            ) : (
-              <Link to='/signin' className='button is-primary'>
-                Login
-              </Link>
-            )}
-          </div>
-        </Container>
-      </Menu>
-    </Navbar>
+              ) : (
+                <Link to='/signin' className='button is-primary'>
+                  Login
+                </Link>
+              )}
+            </div>
+          </Container>
+        </Menu>
+      </Navbar>
+    </GridContainer>
   );
 }
