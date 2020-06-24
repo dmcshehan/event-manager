@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import firebase from "../../auth/firebase";
+import firebase from "../auth/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import classNames from "./App.module.css";
 
 //components
-import Header from "../Header/Header";
-import NavBar from "../Navbar/Navbar";
-import DropDown from "../Dropdown/Dropdown";
-import Signin from "../Signin/Signin";
-import Dashboard from "../Dashboard/Dashboard";
-import EventModal from "../EventModal/EventModal";
-import EventForm from "../EventForm/EventForm";
+import Header from "./Header/Header";
+import NavBar from "./Navbar/Navbar";
+import DropDown from "./Dropdown/Dropdown";
+import Signin from "./Signin/Signin";
+import Dashboard from "./Dashboard/Dashboard";
+import EventModal from "./EventModal/EventModal";
 
 //Actioncreators
-import { userLoginSuccess } from "../../store/actionCreators/user";
+import { userLoginSuccess } from "../store/actionCreators/user";
 
 export default function App() {
   const [isDropdownOpen, setDropdownState] = useState(false);

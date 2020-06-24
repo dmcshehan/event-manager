@@ -6,7 +6,7 @@ import Logo from "../Logo/Logo";
 import Navbar from "react-bulma-components/lib/components/navbar";
 import GridContainer from "react-bulma-components/lib/components/container";
 
-const { Brand, Burger, Menu, Container, Item } = Navbar;
+const { Brand, Burger, Menu, Container } = Navbar;
 
 export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
   const userState = useSelector((state) => state.user);
