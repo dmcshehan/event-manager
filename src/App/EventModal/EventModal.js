@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+//components
 import Modal from "react-bulma-components/lib/components/modal";
 import EventForm from "../EventForm/EventForm";
 import Button from "react-bulma-components/lib/components/button";
 import Card from "react-bulma-components/lib/components/card";
+
+//actionCreators
+import { addEvent } from "../../store/actionCreators/event";
+
+//styles
 import styles from "./EventModal.module.css";
 
 const { Header, Footer, Content } = Card;
@@ -15,6 +23,8 @@ export default function AddEventModal({ onModalClose, ...props }) {
     venue: "",
   });
 
+  const dispatch = useDispatch();
+
   function onFormValueChange(clickEvent) {
     const { name, value } = clickEvent.target;
     setFormData({
@@ -24,7 +34,7 @@ export default function AddEventModal({ onModalClose, ...props }) {
   }
 
   function onFormSubmit() {
-    console.log(formData);
+    dispatch(addEvent(formData));
   }
 
   return (

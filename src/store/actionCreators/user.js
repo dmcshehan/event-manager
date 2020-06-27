@@ -1,3 +1,7 @@
+import firebase from "../../auth/firebase";
+import googleProvider from "../../auth/providers/google";
+import { db } from "../../auth/firebase";
+
 import * as userActionTypes from "../actionTypes/user";
 
 function userLoginSuccess(user) {

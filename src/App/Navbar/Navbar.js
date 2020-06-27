@@ -8,7 +8,7 @@ import GridContainer from "react-bulma-components/lib/components/container";
 
 const { Brand, Burger, Menu, Container } = Navbar;
 
-export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
+export default function NavbarComp({ toggleDropdown, isOpen }) {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
 
@@ -30,7 +30,7 @@ export default function NavbarComp({ toggleDropdown, isDropdownOpen }) {
                   <div
                     onClick={toggleDropdown}
                     className={`${classNames.imgBtn} ${
-                      isDropdownOpen ? classNames.border : ""
+                      isOpen ? classNames.border : ""
                     }`}
                     style={{
                       backgroundImage: `url(${user.photoURL})`,

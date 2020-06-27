@@ -17,14 +17,12 @@ import EventModal from "./EventModal/EventModal";
 import { userLoginSuccess } from "../store/actionCreators/user";
 
 export default function App() {
+  const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownState] = useState(false);
   const [isModelOpen, setModelOpen] = useState(false);
 
-  const userState = useSelector((state) => state.user);
-  const { user } = userState;
+  const { user } = useSelector((state) => state.user);
   const isLoggedIn = user ? true : false;
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -52,23 +50,20 @@ export default function App() {
   return (
     <Router>
       <div className={classNames.app}>
-        <EventModal onModalClose={closeModal} show={isModelOpen} />
-
-        <NavBar
-          toggleDropdown={toggleDropdown}
-          isDropdownOpen={isDropdownOpen}
-        />
-        {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
+        <NavBar toggleDropdown={toggleDropdown} isOpen={isDropdownOpen} />
         {!isLoggedIn ? <Header /> : null}
+        <EventModal onModalClose={closeModal} show={isModelOpen} />
+        {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
+
         <Switch>
+          <Route exact path='/signin' component={Signin}></Route>
           <Route
             exact
             path='/dashboard'
             render={() => {
               return <Dashboard onAddEventBtnClick={openModal} />;
             }}
-          ></Route>
-          <Route exact path='/signin' component={Signin}></Route>
+          />
         </Switch>
       </div>
     </Router>
