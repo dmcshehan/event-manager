@@ -2,11 +2,16 @@ import { db } from "../../auth/firebase";
 
 function addEvent(eventInfo) {
   return function (dispatch, getState) {
+    const { user } = getState().user;
+    const { uid } = user;
+
     db.collection("events")
       .add({
+        uid,
         ...eventInfo,
       })
       .then(function (docRef) {
+        Promise.resolve("Done");
         console.log("Document written with ID: ", docRef.id);
       })
       .catch(function (error) {
@@ -17,7 +22,6 @@ function addEvent(eventInfo) {
 
 function fetchEvents() {
   return (dispatch, getState) => {
-    console.log("fetchEvents");
     var eventsRef = db.collection("events");
     const { user } = getState().user;
     const { uid } = user;
@@ -25,10 +29,18 @@ function fetchEvents() {
     // Create a query against the collection.
     var query = eventsRef.where("uid", "==", uid);
 
-    query.get().then(function (querySnapshot) {
+    // query.get().then(function (querySnapshot) {
+    //   querySnapshot.forEach(function (doc) {
+    //     console.log(doc.id, " => ", doc.data());
+    //   });
+    // });
+
+    query.onSnapshot(function (querySnapshot) {
+      var events = [];
       querySnapshot.forEach(function (doc) {
-        console.log(doc.id, " => ", doc.data());
+        events.push(doc.data());
       });
+      console.log(events);
     });
   };
 }

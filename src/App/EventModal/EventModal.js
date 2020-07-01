@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //components
 import Modal from "react-bulma-components/lib/components/modal";
@@ -9,6 +9,7 @@ import Card from "react-bulma-components/lib/components/card";
 
 //actionCreators
 import { addEvent } from "../../store/actionCreators/event";
+import { closeModal } from "../../store/actionCreators/modal";
 
 //styles
 import styles from "./EventModal.module.css";
@@ -16,14 +17,15 @@ import styles from "./EventModal.module.css";
 const { Header, Footer, Content } = Card;
 const { Title } = Header;
 
-export default function AddEventModal({ onModalClose, ...props }) {
+export default function AddEventModal() {
+  const dispatch = useDispatch();
+  const { currentlyOpenModal } = useSelector((state) => state.modal);
+
   const [formData, setFormData] = useState({
     title: "",
     date: "",
     venue: "",
   });
-
-  const dispatch = useDispatch();
 
   function onFormValueChange(clickEvent) {
     const { name, value } = clickEvent.target;
@@ -36,9 +38,12 @@ export default function AddEventModal({ onModalClose, ...props }) {
   function onFormSubmit() {
     dispatch(addEvent(formData));
   }
+  function onModalClose() {
+    dispatch(closeModal());
+  }
 
   return (
-    <Modal show={true} onClose={onModalClose} {...props}>
+    <Modal show={currentlyOpenModal === "event"} onClose={onModalClose}>
       <Card className={styles.eventModal}>
         <Header>
           <Title>Add An Event</Title>

@@ -11,7 +11,7 @@ import { fetchEvents } from "../../store/actionCreators/event";
 
 import classNames from "./Dashboard.module.css";
 
-export default function Dashboard({ onAddEventBtnClick }) {
+export default function Dashboard() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
@@ -25,7 +25,7 @@ export default function Dashboard({ onAddEventBtnClick }) {
     <section className={classNames.dashboard}>
       <GridContainer fluid>
         <Columns>
-          <EventMenu onAddEventBtnClick={onAddEventBtnClick} />
+          <EventMenu />
           <EventInfo />
         </Columns>
       </GridContainer>

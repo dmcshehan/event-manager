@@ -14,8 +14,8 @@ export default function Signup() {
     signUpUserWithProvider(type);
   }
   useEffect(() => {
-    console.log(user);
-  });
+    console.log("Signin.js", user);
+  }, [user]);
 
   return user ? (
     <Redirect to='/dashboard' />

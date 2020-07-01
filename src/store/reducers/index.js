@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 import userReducer from "./user.js";
+import modalReducer from "./modal.js";
 
 const persistConfig = {
   key: "root",
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  modal: modalReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

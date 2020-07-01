@@ -19,9 +19,9 @@ import { userLoginSuccess } from "../store/actionCreators/user";
 export default function App() {
   const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownState] = useState(false);
-  const [isModelOpen, setModelOpen] = useState(false);
 
   const { user } = useSelector((state) => state.user);
+
   const isLoggedIn = user ? true : false;
 
   useEffect(() => {
@@ -40,30 +40,17 @@ export default function App() {
     setDropdownState(false);
   }
 
-  function openModal() {
-    setModelOpen(true);
-  }
-  function closeModal() {
-    setModelOpen(false);
-  }
-
   return (
     <Router>
       <div className={classNames.app}>
         <NavBar toggleDropdown={toggleDropdown} isOpen={isDropdownOpen} />
         {!isLoggedIn ? <Header /> : null}
-        <EventModal onModalClose={closeModal} show={isModelOpen} />
+        <EventModal />
         {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
 
         <Switch>
-          <Route exact path='/signin' component={Signin}></Route>
-          <Route
-            exact
-            path='/dashboard'
-            render={() => {
-              return <Dashboard onAddEventBtnClick={openModal} />;
-            }}
-          />
+          <Route exact path='/signin' component={Signin} />
+          <Route exact path='/dashboard' component={Dashboard} />
         </Switch>
       </div>
     </Router>
