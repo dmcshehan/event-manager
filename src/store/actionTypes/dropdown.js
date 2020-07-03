@@ -1,0 +1,2 @@
+export const CLOSE_DROPDOWN = "CLOSE_DROPDOWN";
+export const OPEN_DROPDOWN = "OPEN_DROPDOWN";

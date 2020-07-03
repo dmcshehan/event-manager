@@ -1,19 +1,19 @@
 import produce from "immer";
-import { OPEN_MODAL, CLOSE_MODAL } from "../actionTypes/modal";
+import { OPEN_DROPDOWN, CLOSE_DROPDOWN } from "../actionTypes/dropdown";
 
 const initialState = {
-  currentlyOpenModal: "",
+  isOpen: false,
 };
 
 export default (state = initialState, action) =>
   produce(state, (draftState) => {
     const { type, payload } = action;
     switch (type) {
-      case OPEN_MODAL:
-        draftState.currentlyOpenModal = payload.modalName;
+      case OPEN_DROPDOWN:
+        draftState.isOpen = true;
         break;
-      case CLOSE_MODAL:
-        draftState.currentlyOpenModal = null;
+      case CLOSE_DROPDOWN:
+        draftState.isOpen = false;
         break;
       default:
         break;

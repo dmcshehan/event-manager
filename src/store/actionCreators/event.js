@@ -1,4 +1,5 @@
 import { db } from "../../auth/firebase";
+import { FETCH_EVENTS_SUCCESS } from "../actionTypes/event";
 
 function addEvent(eventInfo) {
   return function (dispatch, getState) {
@@ -20,27 +21,28 @@ function addEvent(eventInfo) {
   };
 }
 
+function onFetchEventsSuccess(events) {
+  return {
+    type: FETCH_EVENTS_SUCCESS,
+    payload: {
+      events,
+    },
+  };
+}
 function fetchEvents() {
   return (dispatch, getState) => {
     var eventsRef = db.collection("events");
     const { user } = getState().user;
     const { uid } = user;
 
-    // Create a query against the collection.
     var query = eventsRef.where("uid", "==", uid);
-
-    // query.get().then(function (querySnapshot) {
-    //   querySnapshot.forEach(function (doc) {
-    //     console.log(doc.id, " => ", doc.data());
-    //   });
-    // });
 
     query.onSnapshot(function (querySnapshot) {
       var events = [];
       querySnapshot.forEach(function (doc) {
         events.push(doc.data());
       });
-      console.log(events);
+      dispatch(onFetchEventsSuccess(events));
     });
   };
 }

@@ -6,11 +6,10 @@ import Logo from "../Logo/Logo";
 import Navbar from "react-bulma-components/lib/components/navbar";
 import GridContainer from "react-bulma-components/lib/components/container";
 
-const { Brand, Burger, Menu, Container } = Navbar;
+const { Brand, Burger, Menu, Container, Item } = Navbar;
 
 export default function NavbarComp({ toggleDropdown, isOpen }) {
-  const userState = useSelector((state) => state.user);
-  const { user } = userState;
+  const { user } = useSelector((state) => state.user);
 
   return (
     <GridContainer fluid className={classNames.navbarContainer}>
@@ -24,25 +23,30 @@ export default function NavbarComp({ toggleDropdown, isOpen }) {
 
         <Menu>
           <Container position='end'>
-            <div className='navbar-item'>
-              {user ? (
-                <figure className='image is-48x48'>
-                  <div
-                    onClick={toggleDropdown}
-                    className={`${classNames.imgBtn} ${
-                      isOpen ? classNames.border : ""
-                    }`}
-                    style={{
-                      backgroundImage: `url(${user.photoURL})`,
-                    }}
-                  ></div>
-                </figure>
-              ) : (
-                <Link to='/signin' className='button is-primary'>
-                  Login
-                </Link>
-              )}
-            </div>
+            {user ? (
+              <>
+                <div className='navbar-item'>
+                  <Link to='/dashboard'>Dashboard</Link>
+                </div>
+                <div className='navbar-item'>
+                  <figure className='image is-48x48'>
+                    <div
+                      onClick={toggleDropdown}
+                      className={`${classNames.imgBtn} ${
+                        isOpen ? classNames.border : ""
+                      }`}
+                      style={{
+                        backgroundImage: `url(${user.photoURL})`,
+                      }}
+                    ></div>
+                  </figure>
+                </div>
+              </>
+            ) : (
+              <Link to='/signin' className='button is-primary'>
+                Login
+              </Link>
+            )}
           </Container>
         </Menu>
       </Navbar>

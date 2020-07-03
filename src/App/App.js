@@ -15,19 +15,22 @@ import EventModal from "./EventModal/EventModal";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
+import { fetchEvents } from "../store/actionCreators/event";
 
 export default function App() {
   const dispatch = useDispatch();
   const [isDropdownOpen, setDropdownState] = useState(false);
 
   const { user } = useSelector((state) => state.user);
+  const { isOpen } = useSelector((state) => state.dropDown);
 
   const isLoggedIn = user ? true : false;
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        dispatch(userLoginSuccess(user));
+    firebase.auth().onAuthStateChanged(function (loggedInUser) {
+      if (!isLoggedIn && loggedInUser) {
+        dispatch(userLoginSuccess(loggedInUser));
+        dispatch(fetchEvents());
       }
     });
   });

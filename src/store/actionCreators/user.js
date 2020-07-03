@@ -1,6 +1,4 @@
 import firebase from "../../auth/firebase";
-import googleProvider from "../../auth/providers/google";
-import { db } from "../../auth/firebase";
 
 import * as userActionTypes from "../actionTypes/user";
 
@@ -13,10 +11,24 @@ function userLoginSuccess(user) {
   };
 }
 
-function userLogoutSuccess() {
+function onUserLogoutSuccess() {
   return {
     type: userActionTypes.USER_LOGOUT_SUCCESS,
   };
 }
 
-export { userLoginSuccess, userLogoutSuccess };
+function logoutUser() {
+  return (dispatch) => {
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        dispatch(onUserLogoutSuccess());
+      })
+      .catch(function (error) {
+        // An error happened.
+      });
+  };
+}
+
+export { userLoginSuccess, logoutUser };

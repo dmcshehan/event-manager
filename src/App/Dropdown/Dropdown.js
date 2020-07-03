@@ -7,7 +7,7 @@ import Box from "react-bulma-components/lib/components/box";
 import Button from "react-bulma-components/lib/components/button";
 import Image from "react-bulma-components/lib/components/image";
 //actioncreators
-import { userLogoutSuccess } from "../../store/actionCreators/user";
+import { logoutUser } from "../../store/actionCreators/user";
 
 export default function Dropdown({ closeDropDown }) {
   const dispatch = useDispatch();
@@ -15,16 +15,8 @@ export default function Dropdown({ closeDropDown }) {
   const { user } = userState;
 
   function logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        closeDropDown();
-        dispatch(userLogoutSuccess());
-      })
-      .catch(function (error) {
-        // An error happened.
-      });
+    closeDropDown();
+    dispatch(logoutUser());
   }
 
   return (
