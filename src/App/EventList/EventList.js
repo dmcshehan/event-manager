@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import Menu from "react-bulma-components/lib/components/menu";
-import EventListItem from "./EventListItem/EventList";
+import EventListItem from "./EventListItem/EventListItem";
 
 const { List } = Menu;
 
