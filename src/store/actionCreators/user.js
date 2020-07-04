@@ -1,4 +1,5 @@
 import firebase from "../../auth/firebase";
+import { clearEvents } from "./event";
 
 import * as userActionTypes from "../actionTypes/user";
 
@@ -24,6 +25,7 @@ function logoutUser() {
       .signOut()
       .then(function () {
         dispatch(onUserLogoutSuccess());
+        dispatch(clearEvents());
       })
       .catch(function (error) {
         // An error happened.

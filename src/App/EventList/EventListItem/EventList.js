@@ -1,5 +1,9 @@
 import React from "react";
+import Menu from "react-bulma-components/lib/components/menu";
 
-export default function EventList() {
-  return <div></div>;
+const { List } = Menu;
+const { Item } = List;
+
+export default function EventListItem({ title }) {
+  return <Item>{title}</Item>;
 }

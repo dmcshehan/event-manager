@@ -10,6 +10,7 @@ import dropdownReducer from "./dropdown";
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["dropDown", "modal"],
 };
 
 const rootReducer = combineReducers({

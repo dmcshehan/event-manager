@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-export default function CatFacts({ id = 5 }) {
-  const [data, setData] = useState();
+import Menu from "react-bulma-components/lib/components/menu";
+import EventListItem from "./EventListItem/EventList";
 
-  const [a, b, ...c] = [1, 2, 3, 4, 5];
+const { List } = Menu;
 
-  console.log(a, b, c);
+export default function ListItems() {
+  const { events } = useSelector((state) => state.event);
 
-  return <div></div>;
+  const eventItems = events
+    ? events.map((element) => {
+        return <EventListItem key={element._id} {...element} />;
+      })
+    : null;
+
+  return (
+    <Menu>
+      <List>{eventItems}</List>
+    </Menu>
+  );
 }

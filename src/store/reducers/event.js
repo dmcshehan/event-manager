@@ -1,5 +1,5 @@
 import produce from "immer";
-import { FETCH_EVENTS_SUCCESS } from "../actionTypes/event";
+import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
 const initialState = {
   events: null,
@@ -11,6 +11,10 @@ export default (state = initialState, action) =>
     switch (type) {
       case FETCH_EVENTS_SUCCESS:
         draftState.events = payload.events;
+        break;
+
+      case CLEAR_EVENTS:
+        draftState.events = null;
         break;
 
       default:

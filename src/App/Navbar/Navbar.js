@@ -1,15 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "./Navbar.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Logo from "../Logo/Logo";
 import Navbar from "react-bulma-components/lib/components/navbar";
 import GridContainer from "react-bulma-components/lib/components/container";
 
+import {
+  openDropdown,
+  closeDropdown,
+} from "../../store/actionCreators/dropdown";
+
 const { Brand, Burger, Menu, Container, Item } = Navbar;
 
-export default function NavbarComp({ toggleDropdown, isOpen }) {
+export default function NavbarComp() {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const { isDropdownOpen } = useSelector((state) => state.dropDown);
+
+  function toggleDropdown() {
+    if (isDropdownOpen) {
+      return dispatch(closeDropdown());
+    }
+    dispatch(openDropdown());
+  }
 
   return (
     <GridContainer fluid className={classNames.navbarContainer}>
@@ -33,7 +47,7 @@ export default function NavbarComp({ toggleDropdown, isOpen }) {
                     <div
                       onClick={toggleDropdown}
                       className={`${classNames.imgBtn} ${
-                        isOpen ? classNames.border : ""
+                        isDropdownOpen ? classNames.border : ""
                       }`}
                       style={{
                         backgroundImage: `url(${user.photoURL})`,

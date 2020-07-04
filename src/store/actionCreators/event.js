@@ -1,5 +1,5 @@
 import { db } from "../../auth/firebase";
-import { FETCH_EVENTS_SUCCESS } from "../actionTypes/event";
+import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
 function addEvent(eventInfo) {
   return function (dispatch, getState) {
@@ -37,14 +37,24 @@ function fetchEvents() {
 
     var query = eventsRef.where("uid", "==", uid);
 
-    query.onSnapshot(function (querySnapshot) {
+    const unsubscribe = query.onSnapshot(function (querySnapshot) {
       var events = [];
       querySnapshot.forEach(function (doc) {
-        events.push(doc.data());
+        events.push({
+          ...doc.data(),
+          _id: doc.id,
+        });
       });
       dispatch(onFetchEventsSuccess(events));
     });
+
+    return unsubscribe;
   };
 }
 
-export { addEvent, fetchEvents };
+function clearEvents() {
+  return {
+    type: CLEAR_EVENTS,
+  };
+}
+export { addEvent, fetchEvents, clearEvents };

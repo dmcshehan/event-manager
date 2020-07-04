@@ -39,3 +39,11 @@
 
   font-weight: 500;
 }
+
+.showDropdown {
+  display: block;
+}
+
+.hideDropdown {
+  display: none !important;
+}

@@ -1,26 +1,30 @@
 import React from "react";
-import firebase from "../../auth/firebase";
+
 import classNames from "./Dropdown.module.css";
 import { useSelector, useDispatch } from "react-redux";
 
 import Box from "react-bulma-components/lib/components/box";
 import Button from "react-bulma-components/lib/components/button";
 import Image from "react-bulma-components/lib/components/image";
+
 //actioncreators
 import { logoutUser } from "../../store/actionCreators/user";
 
-export default function Dropdown({ closeDropDown }) {
+export default function Dropdown() {
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.user);
-  const { user } = userState;
+  const { user } = useSelector((state) => state.user);
+  const { isDropdownOpen } = useSelector((state) => state.dropDown);
 
   function logout() {
-    closeDropDown();
     dispatch(logoutUser());
   }
 
-  return (
-    <Box className={classNames.dropDown}>
+  return user ? (
+    <Box
+      className={`${classNames.dropDown} ${
+        isDropdownOpen ? classNames.showDropdown : classNames.hideDropdown
+      }`}
+    >
       <figure className={`image ${classNames.avaratFigure}`}>
         <Image rounded={true} src={user.photoURL} alt='User Avatar' />
       </figure>
@@ -33,5 +37,5 @@ export default function Dropdown({ closeDropDown }) {
         Sign out
       </Button>
     </Box>
-  );
+  ) : null;
 }

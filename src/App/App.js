@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import classNames from "./App.module.css";
 
+//hooks
+import useIsLoggedIn from "../hooks/useIsLoggedIn";
+
 //components
 import Header from "./Header/Header";
 import NavBar from "./Navbar/Navbar";
@@ -15,41 +18,27 @@ import EventModal from "./EventModal/EventModal";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
-import { fetchEvents } from "../store/actionCreators/event";
 
 export default function App() {
   const dispatch = useDispatch();
-  const [isDropdownOpen, setDropdownState] = useState(false);
 
-  const { user } = useSelector((state) => state.user);
-  const { isOpen } = useSelector((state) => state.dropDown);
-
-  const isLoggedIn = user ? true : false;
+  const isLoggedIn = useIsLoggedIn();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (loggedInUser) {
       if (!isLoggedIn && loggedInUser) {
         dispatch(userLoginSuccess(loggedInUser));
-        dispatch(fetchEvents());
       }
     });
   });
 
-  function toggleDropdown(e) {
-    setDropdownState(!isDropdownOpen);
-  }
-
-  function closeDropDown() {
-    setDropdownState(false);
-  }
-
   return (
     <Router>
       <div className={classNames.app}>
-        <NavBar toggleDropdown={toggleDropdown} isOpen={isDropdownOpen} />
+        <NavBar />
         {!isLoggedIn ? <Header /> : null}
         <EventModal />
-        {isDropdownOpen ? <DropDown closeDropDown={closeDropDown} /> : null}
+        <DropDown />
 
         <Switch>
           <Route exact path='/signin' component={Signin} />
