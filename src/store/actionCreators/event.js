@@ -1,6 +1,8 @@
 import { db } from "../../auth/firebase";
 import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
+import { closeModal } from "./modal";
+
 function addEvent(eventInfo) {
   return function (dispatch, getState) {
     const { user } = getState().user;
@@ -12,8 +14,8 @@ function addEvent(eventInfo) {
         ...eventInfo,
       })
       .then(function (docRef) {
-        Promise.resolve("Done");
-        console.log("Document written with ID: ", docRef.id);
+        dispatch(closeModal());
+        console.log("Document written :", docRef.id);
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);

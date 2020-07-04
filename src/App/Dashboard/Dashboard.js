@@ -15,17 +15,14 @@ import classNames from "./Dashboard.module.css";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
-  const { events } = useSelector((state) => state.event);
   const isLoggedIn = useIsLoggedIn();
 
   useEffect(() => {
-    if (isLoggedIn && events === null) {
-      const unsubscribe = dispatch(fetchEvents());
+    const unsubscribe = dispatch(fetchEvents());
 
-      return () => {
-        unsubscribe();
-      };
-    }
+    return () => {
+      unsubscribe();
+    };
   });
 
   return isLoggedIn ? (
