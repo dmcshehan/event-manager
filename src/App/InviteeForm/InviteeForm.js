@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "react-bulma-components/lib/components/box";
 import Columns from "react-bulma-components/lib/components/columns";
 import {
@@ -15,6 +15,25 @@ import classNames from "./InviteeForm.module.css";
 const { Column } = Columns;
 
 export default function InviteeForm() {
+  const [formValues, setFormValues] = useState({
+    name: "",
+    status: "",
+  });
+
+  const { name, status } = formValues;
+
+  function changeFormValues(e) {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  }
+
+  function handleAddInvitee(e) {
+    e.preventDefault();
+  }
+
   return (
     <Box className={classNames.inviteeForm}>
       <form>
@@ -23,9 +42,10 @@ export default function InviteeForm() {
             <Field>
               <Control>
                 <Input
-                  placeholder='Text input'
-                  value={"hi"}
-                  onChange={() => {}}
+                  name='name'
+                  placeholder='Invitee Name'
+                  value={name}
+                  onChange={changeFormValues}
                 />
               </Control>
             </Field>
@@ -35,12 +55,13 @@ export default function InviteeForm() {
               <Control>
                 <div className={`select ${classNames.status}`}>
                   <select
-                    value='hi'
-                    onChange={() => {}}
+                    name='status'
+                    value={status}
+                    onChange={changeFormValues}
                     className={classNames.status}
                   >
-                    <option value='hi'>Confirmed</option>
-                    <option>Unconfirm</option>
+                    <option value='confirmed'>Confirmed</option>
+                    <option value='confirm'>Unconfirm</option>
                   </select>
                 </div>
               </Control>
@@ -48,7 +69,9 @@ export default function InviteeForm() {
           </Column>
           <Column size={2}>
             <Field>
-              <Button className={classNames.submit}>Add</Button>
+              <Button className={classNames.submit} onClick={handleAddInvitee}>
+                Add
+              </Button>
             </Field>
           </Column>
         </Columns>
