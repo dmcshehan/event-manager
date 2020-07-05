@@ -6,6 +6,7 @@ import userReducer from "./user";
 import modalReducer from "./modal";
 import eventReducer from "./event";
 import dropdownReducer from "./dropdown";
+import eventInfoReducer from "./eventInfo";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   event: eventReducer,
   dropDown: dropdownReducer,
+  eventInfo: eventInfoReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
