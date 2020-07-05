@@ -10,7 +10,7 @@ export default (state = initialState, action) =>
     const { type, payload } = action;
     switch (type) {
       case SELECT_EVENT:
-        draftState.selectedEvent = payload._id;
+        draftState.selectedEvent = payload.event;
         break;
 
       default:

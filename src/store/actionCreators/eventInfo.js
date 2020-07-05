@@ -1,11 +1,19 @@
 import { SELECT_EVENT } from "../actionTypes/eventInfo";
 
-function selectEvent(_id) {
+function onSelectEvent(event) {
   return {
     type: SELECT_EVENT,
     payload: {
-      _id,
+      event,
     },
+  };
+}
+
+function selectEvent(_id) {
+  return (dispatch, getState) => {
+    const { events } = getState().event;
+    const selected = events.find((event) => event._id === _id);
+    dispatch(onSelectEvent(selected));
   };
 }
 
