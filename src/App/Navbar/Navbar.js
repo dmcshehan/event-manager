@@ -11,7 +11,7 @@ import {
   closeDropdown,
 } from "../../store/actionCreators/dropdown";
 
-const { Brand, Burger, Menu, Container, Item } = Navbar;
+const { Brand, Burger, Menu, Container } = Navbar;
 
 export default function NavbarComp() {
   const dispatch = useDispatch();

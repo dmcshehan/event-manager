@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import useIsLoggedIn from "../../hooks/useIsLoggedIn";
@@ -18,11 +18,14 @@ export default function Dashboard() {
   const isLoggedIn = useIsLoggedIn();
 
   useEffect(() => {
-    const unsubscribe = dispatch(fetchEvents());
+    if (isLoggedIn) {
+      const unsubscribe = dispatch(fetchEvents());
 
-    return () => {
-      unsubscribe();
-    };
+      return () => {
+        console.log("unmount");
+        unsubscribe();
+      };
+    }
   });
 
   return isLoggedIn ? (

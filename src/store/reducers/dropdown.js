@@ -7,7 +7,7 @@ const initialState = {
 
 export default (state = initialState, action) =>
   produce(state, (draftState) => {
-    const { type, payload } = action;
+    const { type } = action;
     switch (type) {
       case OPEN_DROPDOWN:
         draftState.isDropdownOpen = true;

@@ -1,37 +1,41 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Box from "react-bulma-components/lib/components/box";
 import Columns from "react-bulma-components/lib/components/columns";
 import {
   Field,
   Control,
-  Label,
   Input,
-  Select,
 } from "react-bulma-components/lib/components/form";
 import Button from "react-bulma-components/lib/components/button";
+
+import { addInvitee } from "../../store/actionCreators/event";
 
 import classNames from "./InviteeForm.module.css";
 
 const { Column } = Columns;
 
 export default function InviteeForm() {
-  const [formValues, setFormValues] = useState({
+  const dispatch = useDispatch();
+
+  const [inviteeInfo, setinviteeInfo] = useState({
     name: "",
-    status: "",
+    status: "confirmed",
   });
 
-  const { name, status } = formValues;
+  const { name, status } = inviteeInfo;
 
-  function changeFormValues(e) {
+  function changeinviteeInfo(e) {
     const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
+    setinviteeInfo({
+      ...inviteeInfo,
       [name]: value,
     });
   }
 
   function handleAddInvitee(e) {
     e.preventDefault();
+    dispatch(addInvitee(inviteeInfo));
   }
 
   return (
@@ -45,7 +49,7 @@ export default function InviteeForm() {
                   name='name'
                   placeholder='Invitee Name'
                   value={name}
-                  onChange={changeFormValues}
+                  onChange={changeinviteeInfo}
                 />
               </Control>
             </Field>
@@ -57,11 +61,11 @@ export default function InviteeForm() {
                   <select
                     name='status'
                     value={status}
-                    onChange={changeFormValues}
+                    onChange={changeinviteeInfo}
                     className={classNames.status}
                   >
                     <option value='confirmed'>Confirmed</option>
-                    <option value='confirm'>Unconfirm</option>
+                    <option value='unconfirm'>Unconfirm</option>
                   </select>
                 </div>
               </Control>
@@ -69,8 +73,13 @@ export default function InviteeForm() {
           </Column>
           <Column size={2}>
             <Field>
-              <Button className={classNames.submit} onClick={handleAddInvitee}>
-                Add
+              <Button
+                color='primary'
+                className={classNames.submit}
+                onClick={handleAddInvitee}
+                disabled={inviteeInfo.name === ""}
+              >
+                Add Invitee
               </Button>
             </Field>
           </Column>

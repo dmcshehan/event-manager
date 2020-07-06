@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
 import Menu from "react-bulma-components/lib/components/menu";
 import EventListItem from "./EventListItem/EventListItem";
