@@ -8,10 +8,11 @@ import {
   Input,
 } from "react-bulma-components/lib/components/form";
 import Button from "react-bulma-components/lib/components/button";
+import Card from "react-bulma-components/lib/components/card";
 
 import { addInvitee } from "../../store/actionCreators/event";
 
-import classNames from "./InviteeForm.module.css";
+import classNames from "./InviteeForm.module.scss";
 
 const { Column } = Columns;
 
@@ -39,7 +40,7 @@ export default function InviteeForm() {
   }
 
   return (
-    <Box className={classNames.inviteeForm}>
+    <Card className={classNames.inviteeForm}>
       <form>
         <Columns>
           <Column size={6}>
@@ -85,6 +86,6 @@ export default function InviteeForm() {
           </Column>
         </Columns>
       </form>
-    </Box>
+    </Card>
   );
 }

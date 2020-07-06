@@ -6,6 +6,8 @@ import Columns from "react-bulma-components/lib/components/columns";
 import EventInfoHeader from "./EventInfoHeader/EventInfoHeader";
 import EventSummary from "../EventSummary/EventSummary";
 import InviteeForm from "../InviteeForm/InviteeForm";
+import InviteeLists from "../InviteeLists/InviteeLists";
+
 import classNames from "./EventInfo.module.css";
 
 const { Content } = Card;
@@ -17,8 +19,8 @@ export default function EventMenu() {
       <Card className={classNames.eventInfoCard}>
         <EventInfoHeader />
         <Content>
-          <EventSummary />
           <InviteeForm />
+          <InviteeLists />
         </Content>
       </Card>
     </Column>

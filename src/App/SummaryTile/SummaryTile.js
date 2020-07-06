@@ -1,12 +1,14 @@
 import React from "react";
-import Box from "react-bulma-components/lib/components/box";
+import Card from "react-bulma-components/lib/components/card";
+
+import classNames from "./SummaryTile.module.scss";
 
 export default function SummaryTile({ title, value }) {
   return (
-    <Box>
+    <Card className={classNames.summaryTile}>
       <h3 className='title is-5 has-text-centered'>
         {title} : {value}
       </h3>
-    </Box>
+    </Card>
   );
 }

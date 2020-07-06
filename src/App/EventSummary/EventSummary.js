@@ -18,14 +18,9 @@ export default function EventSummary() {
         <Column size={6}>
           <EventInfoTitle>{title}</EventInfoTitle>
         </Column>
+
         <Column size={2}>
-          <SumarryTile title='Confirmed' value={50} />
-        </Column>
-        <Column size={2}>
-          <SumarryTile title='Unonfirmed' value={50} />
-        </Column>
-        <Column size={2}>
-          <SumarryTile title='All' value={50} />
+          <SumarryTile title='All Invitees' value={50} />
         </Column>
       </Columns>
     </div>
