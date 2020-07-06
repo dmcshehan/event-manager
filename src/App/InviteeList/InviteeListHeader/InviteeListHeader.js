@@ -7,12 +7,12 @@ const { Header } = Card;
 
 const { Title, Icon } = Header;
 
-export default function InviteeListHeader({ title }) {
+export default function InviteeListHeader({ title, count }) {
   return (
     <Header>
       <Title>{title}</Title>
       <Icon>
-        <Button>50</Button>
+        <Button>Invitees : {count}</Button>
       </Icon>
     </Header>
   );

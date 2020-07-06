@@ -20,7 +20,7 @@ export default function InviteeList({ title, invitees }) {
 
   return (
     <Card>
-      <InviteeListHeader title={title} />
+      <InviteeListHeader title={title} count={inviteeList.length} />
       <Content>{isEmpty ? "No Invitees" : <List>{inviteeList}</List>}</Content>
     </Card>
   );
