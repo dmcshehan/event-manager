@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Box from "react-bulma-components/lib/components/box";
 import Columns from "react-bulma-components/lib/components/columns";
 import {
   Field,

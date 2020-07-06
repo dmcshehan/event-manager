@@ -4,7 +4,6 @@ import Card from "react-bulma-components/lib/components/card";
 import Columns from "react-bulma-components/lib/components/columns";
 
 import EventInfoHeader from "./EventInfoHeader/EventInfoHeader";
-import EventSummary from "../EventSummary/EventSummary";
 import InviteeForm from "../InviteeForm/InviteeForm";
 import InviteeLists from "../InviteeLists/InviteeLists";
 

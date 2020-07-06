@@ -11,9 +11,9 @@ export default function InviteeListHeader({ title }) {
   return (
     <Header>
       <Title>{title}</Title>
-      {/* <Icon>
-        <Button>Add Event</Button>
-      </Icon> */}
+      <Icon>
+        <Button>50</Button>
+      </Icon>
     </Header>
   );
 }
