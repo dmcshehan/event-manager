@@ -33,18 +33,20 @@ export default function App() {
   });
 
   return (
-    <Router>
-      <div className={classNames.app}>
-        <NavBar />
-        {!isLoggedIn ? <Header /> : null}
-        <EventModal />
-        <DropDown />
+    <React.StrictMode>
+      <Router>
+        <div className={classNames.app}>
+          <NavBar />
+          {!isLoggedIn ? <Header /> : null}
+          <EventModal />
+          <DropDown />
 
-        <Switch>
-          <Route exact path='/signin' component={Signin} />
-          <Route exact path='/dashboard' component={Dashboard} />
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route exact path='/signin' component={Signin} />
+            <Route exact path='/dashboard' component={Dashboard} />
+          </Switch>
+        </div>
+      </Router>
+    </React.StrictMode>
   );
 }

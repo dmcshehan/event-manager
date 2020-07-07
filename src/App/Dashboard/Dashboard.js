@@ -22,7 +22,6 @@ export default function Dashboard() {
       const unsubscribe = dispatch(fetchEvents());
 
       return () => {
-        console.log("unmount");
         unsubscribe();
       };
     }

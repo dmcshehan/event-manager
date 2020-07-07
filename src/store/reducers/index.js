@@ -7,11 +7,12 @@ import modalReducer from "./modal";
 import eventReducer from "./event";
 import dropdownReducer from "./dropdown";
 import eventInfoReducer from "./eventInfo";
+import inviteeReducer from "./invitee";
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["dropDown", "modal"],
+  blacklist: ["dropDown", "modal", "invitee"],
 };
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   event: eventReducer,
   dropDown: dropdownReducer,
   eventInfo: eventInfoReducer,
+  invitee: inviteeReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

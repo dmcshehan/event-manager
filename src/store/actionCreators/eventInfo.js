@@ -33,7 +33,28 @@ function selectEvent(eventId) {
       };
       dispatch(onSelectEvent(completeEvent));
     });
+
+    return unsubscribe;
   };
 }
 
-export { selectEvent };
+function deleteInvitee(inviteeId) {
+  return (dispatch, getState) => {
+    const { selectedEvent } = getState().eventInfo;
+
+    var query = db
+      .collection("events")
+      .doc(selectedEvent._id)
+      .collection("invitees")
+      .doc(inviteeId)
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+  };
+}
+
+export { selectEvent, deleteInvitee };
