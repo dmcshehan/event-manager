@@ -17,18 +17,21 @@ function addEvent(eventInfo) {
     const { user } = getState().user;
     const { uid } = user;
 
-    db.collection("events")
-      .add({
-        uid,
-        ...eventInfo,
-      })
-      .then(function (docRef) {
-        dispatch(closeModal());
-        console.log("Document written :", docRef.id);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
+    return new Promise(function (resolve, reject) {
+      db.collection("events")
+        .add({
+          uid,
+          ...eventInfo,
+        })
+        .then(function (docRef) {
+          dispatch(closeModal());
+          resolve(docRef.id);
+          console.log("Document written :", docRef.id);
+        })
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
+        });
+    });
   };
 }
 
@@ -68,21 +71,4 @@ function clearEvents() {
   };
 }
 
-function addInvitee(invitee) {
-  return (dispatch, getState) => {
-    const { selectedEvent } = getState().eventInfo;
-    const { _id } = selectedEvent;
-
-    db.collection("events")
-      .doc(_id)
-      .collection("invitees")
-      .add(invitee)
-      .then(function (docRef) {
-        console.log("Document written :", docRef.id);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-      });
-  };
-}
-export { addEvent, fetchEvents, clearEvents, addInvitee };
+export { addEvent, fetchEvents, clearEvents };

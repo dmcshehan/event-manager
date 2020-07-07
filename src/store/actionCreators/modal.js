@@ -18,4 +18,8 @@ function openEventModal() {
   return onModalOpen("event");
 }
 
-export { openEventModal, closeModal };
+function openInviteeModal() {
+  return onModalOpen("invitee");
+}
+
+export { openEventModal, closeModal, openInviteeModal };

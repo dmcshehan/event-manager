@@ -15,6 +15,7 @@ import DropDown from "./Dropdown/Dropdown";
 import Signin from "./Signin/Signin";
 import Dashboard from "./Dashboard/Dashboard";
 import EventModal from "./EventModal/EventModal";
+import InviteeModal from "./InviteeModal/InviteeModal";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
@@ -39,6 +40,7 @@ export default function App() {
           <NavBar />
           {!isLoggedIn ? <Header /> : null}
           <EventModal />
+          <InviteeModal />
           <DropDown />
 
           <Switch>

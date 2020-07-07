@@ -3,28 +3,27 @@ import { useDispatch, useSelector } from "react-redux";
 
 //components
 import Modal from "react-bulma-components/lib/components/modal";
-import EventForm from "../EventForm/EventForm";
+import InviteeForm from "../InviteeForm/InviteeForm";
 import Button from "react-bulma-components/lib/components/button";
 import Card from "react-bulma-components/lib/components/card";
 
 //actionCreators
-import { addEvent } from "../../store/actionCreators/event";
+import { addInvitee } from "../../store/actionCreators/invitee";
 import { closeModal } from "../../store/actionCreators/modal";
 
 //styles
-import styles from "./EventModal.module.css";
+import styles from "./InviteeModal.module.css";
 
 const { Header, Footer, Content } = Card;
 const { Title } = Header;
 
-export default function AddEventModal() {
+export default function AddInviteeModal() {
   const dispatch = useDispatch();
   const { currentlyOpenModal } = useSelector((state) => state.modal);
 
   const [formData, setFormData] = useState({
-    title: "",
-    date: "",
-    venue: "",
+    name: "",
+    status: "confirmed",
   });
 
   function onFormValueChange(clickEvent) {
@@ -36,11 +35,10 @@ export default function AddEventModal() {
   }
 
   function onFormSubmit() {
-    dispatch(addEvent(formData)).then(() => {
+    dispatch(addInvitee(formData)).then(() => {
       setFormData({
-        title: "",
-        date: "",
-        venue: "",
+        name: "",
+        status: "confirmed",
       });
     });
   }
@@ -49,13 +47,13 @@ export default function AddEventModal() {
   }
 
   return (
-    <Modal show={currentlyOpenModal === "event"} onClose={onModalClose}>
+    <Modal show={currentlyOpenModal === "invitee"} onClose={onModalClose}>
       <Card className={styles.eventModal}>
         <Header>
-          <Title>Add An Event</Title>
+          <Title>Add An Invitee</Title>
         </Header>
         <Content>
-          <EventForm
+          <InviteeForm
             formData={formData}
             onFormValueChange={onFormValueChange}
           />
