@@ -10,6 +10,7 @@ const { Group } = Button;
 
 function Buttons({ inviteeId, name }) {
   const { selectedEvent } = useSelector((state) => state.eventInfo);
+
   const dispatch = useDispatch();
   const { title } = selectedEvent;
 
@@ -21,13 +22,13 @@ function Buttons({ inviteeId, name }) {
     }
   }
 
-  function makeINviteeUpdatable() {
+  function makeInviteeUpdatable() {
     dispatch(setUpdatableInvitee(inviteeId));
   }
 
   return (
     <Group>
-      <Button color='info' size='small' onClick={makeINviteeUpdatable}>
+      <Button color='info' size='small' onClick={makeInviteeUpdatable}>
         Update
       </Button>
       <Button color='danger' size='small' onClick={deleteInviteeFromEvent}>
