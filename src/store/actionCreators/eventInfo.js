@@ -13,6 +13,7 @@ function onSelectEvent(event) {
 function selectEvent(eventId) {
   return (dispatch, getState) => {
     const { events } = getState().event;
+
     const selected = events.find((event) => event._id === eventId);
     const { _id } = selected;
 
@@ -27,10 +28,11 @@ function selectEvent(eventId) {
         });
       });
 
-      const completeEvent = {
+      let completeEvent = {
         ...selected,
         invitees,
       };
+
       dispatch(onSelectEvent(completeEvent));
     });
 
