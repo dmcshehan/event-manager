@@ -1,5 +1,9 @@
 import React from "react";
 import Menu from "react-bulma-components/lib/components/menu";
+import Button from "react-bulma-components/lib/components/button";
+
+import EventControlDropdown from "../../EventControlDropdown/EventControlDropdown";
+
 import { useDispatch } from "react-redux";
 
 //actionCreators
@@ -19,6 +23,7 @@ export default function EventListItem({ title, _id }) {
   return (
     <Item className={classNames.eventListItem} onClick={selectThisEvent}>
       {title}
+      <EventControlDropdown />
     </Item>
   );
 }

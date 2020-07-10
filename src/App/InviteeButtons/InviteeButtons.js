@@ -29,10 +29,10 @@ function Buttons({ inviteeId, name }) {
   return (
     <Group>
       <Button color='info' size='small' onClick={makeInviteeUpdatable}>
-        Update
+        <i className='far fa-edit'></i>
       </Button>
       <Button color='danger' size='small' onClick={deleteInviteeFromEvent}>
-        Delete
+        <i className='far fa-trash-alt'></i>
       </Button>
     </Group>
   );
