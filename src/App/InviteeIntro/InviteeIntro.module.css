@@ -1,0 +1,17 @@
+.eventInfoIntro {
+  min-height: calc(100vh - 124px);
+}
+.image {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 10px;
+  margin-bottom: 50px !important;
+}
+
+.addInviteeBtn {
+  display: block !important;
+  margin: 70px auto 0 !important;
+}

@@ -1,0 +1,17 @@
+.eventInfoIntro {
+  min-height: calc(100vh - 124px);
+}
+.image {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 10px;
+  margin-bottom: 50px !important;
+}
+
+.addEventBtn {
+  display: block !important;
+  margin: 0 auto !important;
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "react-bulma-components/lib/components/button";
-import classNames from "./InviteeButtons.module.css";
 
 import { deleteInvitee } from "../../store/actionCreators/invitee";
 import { setUpdatableInvitee } from "../../store/actionCreators/invitee";

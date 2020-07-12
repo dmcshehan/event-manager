@@ -18,7 +18,7 @@ export default function Signup() {
   }, [user]);
 
   return user ? (
-    <Redirect to='/dashboard' />
+    <Redirect to='/intro' />
   ) : (
     <>
       <div className={classNames.signin}>

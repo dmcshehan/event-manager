@@ -16,9 +16,11 @@ import Signin from "./Signin/Signin";
 import Dashboard from "./Dashboard/Dashboard";
 import EventModal from "./EventModal/EventModal";
 import InviteeModal from "./InviteeModal/InviteeModal";
+import EventIntro from "./EventIntro/EventIntro";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
+import { fetchEvents } from "../store/actionCreators/event";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -29,6 +31,11 @@ export default function App() {
     firebase.auth().onAuthStateChanged(function (loggedInUser) {
       if (!isLoggedIn && loggedInUser) {
         dispatch(userLoginSuccess(loggedInUser));
+        const unsubscribe = dispatch(fetchEvents());
+
+        return () => {
+          unsubscribe();
+        };
       }
     });
   });
@@ -46,6 +53,7 @@ export default function App() {
           <Switch>
             <Route exact path='/signin' component={Signin} />
             <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/intro' component={EventIntro} />
           </Switch>
         </div>
       </Router>

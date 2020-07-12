@@ -2,7 +2,7 @@ import produce from "immer";
 import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
 const initialState = {
-  events: null,
+  events: [],
 };
 
 export default (state = initialState, action) =>
@@ -14,7 +14,7 @@ export default (state = initialState, action) =>
         break;
 
       case CLEAR_EVENTS:
-        draftState.events = null;
+        draftState.events = [];
         break;
 
       default:

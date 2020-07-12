@@ -2,6 +2,7 @@ import { db } from "../../auth/firebase";
 import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
 import { closeModal } from "./modal";
+import { clearSelectedEvent } from "./eventInfo";
 
 function onFetchEventsSuccess(events) {
   return {
@@ -35,6 +36,26 @@ function addEvent(eventInfo) {
   };
 }
 
+function deleteEvent(eventId) {
+  return function (dispatch, getState) {
+    const { selectedEvent } = getState().eventInfo;
+
+    if (selectedEvent._id === eventId) {
+      dispatch(clearSelectedEvent());
+    }
+
+    db.collection("events")
+      .doc(eventId)
+      .delete()
+      .then(function () {
+        console.error("Deleted");
+      })
+      .catch(function (error) {
+        console.error("Error deleting document: ", error);
+      });
+  };
+}
+
 function fetchEvents() {
   return (dispatch, getState) => {
     var eventsRef = db.collection("events");
@@ -56,7 +77,6 @@ function fetchEvents() {
             _id: doc.id,
           });
         });
-        console.log("fetchEvents");
         dispatch(onFetchEventsSuccess(events));
       }
     );
@@ -71,4 +91,4 @@ function clearEvents() {
   };
 }
 
-export { addEvent, fetchEvents, clearEvents };
+export { addEvent, fetchEvents, clearEvents, deleteEvent };

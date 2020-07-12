@@ -1,5 +1,5 @@
 import { db } from "../../auth/firebase";
-import { SELECT_EVENT } from "../actionTypes/eventInfo";
+import { SELECT_EVENT, CLEAR_SELECTED_EVENT } from "../actionTypes/eventInfo";
 
 function onSelectEvent(event) {
   return {
@@ -15,6 +15,7 @@ function selectEvent(eventId) {
     const { events } = getState().event;
 
     const selected = events.find((event) => event._id === eventId);
+
     const { _id } = selected;
 
     var query = db.collection("events").doc(_id).collection("invitees");
@@ -40,4 +41,10 @@ function selectEvent(eventId) {
   };
 }
 
-export { selectEvent };
+function clearSelectedEvent() {
+  return {
+    type: CLEAR_SELECTED_EVENT,
+  };
+}
+
+export { selectEvent, clearSelectedEvent };
