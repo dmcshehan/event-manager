@@ -24,11 +24,11 @@ export default function EventInfo() {
   const { selectedEvent } = useSelector((state) => state.eventInfo);
   const hasInvitees = useHasInvitees();
 
-  useEffect(() => {
-    if (selectedEvent) {
-      dispatch(selectEvent(selectedEvent._id));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (selectedEvent) {
+  //     dispatch(selectEvent(selectedEvent._id));
+  //   }
+  // }, [selectedEvent]);
 
   return (
     <Column>

@@ -29,7 +29,7 @@ export default function App() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (loggedInUser) {
-      if (!isLoggedIn && loggedInUser) {
+      if (loggedInUser) {
         dispatch(userLoginSuccess(loggedInUser));
         const unsubscribe = dispatch(fetchEvents());
 

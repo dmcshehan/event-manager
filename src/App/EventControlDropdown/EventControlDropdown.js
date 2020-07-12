@@ -8,7 +8,8 @@ export default function EventControlDropdown({ _id }) {
   const { events } = useSelector((state) => state.event);
   const specificEvent = events.find((event) => event._id === _id);
 
-  function onDeleteEvent() {
+  function onDeleteEvent(event) {
+    event.stopPropagation();
     if (
       window.confirm(
         `Are you sure you want to delete ${specificEvent.title} from your list?`
@@ -23,7 +24,7 @@ export default function EventControlDropdown({ _id }) {
       <div className={`dropdown is-right is-hoverable`}>
         <div className='dropdown-trigger'>
           <button
-            className='button'
+            className='button is-small'
             aria-haspopup='true'
             aria-controls='dropdown-menu'
           >
@@ -37,11 +38,7 @@ export default function EventControlDropdown({ _id }) {
             <a href='#' className='dropdown-item'>
               Update Event
             </a>
-            <a
-              href='#'
-              className='dropdown-item'
-              onClick={() => onDeleteEvent()}
-            >
+            <a href='#' className='dropdown-item' onClick={onDeleteEvent}>
               Delete Event
             </a>
           </div>

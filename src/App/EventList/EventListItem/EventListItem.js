@@ -22,3 +22,5 @@ export default function EventListItem({ title, _id }) {
     </div>
   );
 }
+
+//onClick={selectThisEvent}
