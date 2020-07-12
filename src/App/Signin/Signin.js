@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import signUpUserWithProvider from "../../auth/signupUserWithProvider";
 
 import Button from "react-bulma-components/lib/components/button";
+import Header from "../Header/Header";
 
 import classNames from "./Signin.module.css";
 
@@ -21,6 +22,7 @@ export default function Signup() {
     <Redirect to='/intro' />
   ) : (
     <>
+      <Header />
       <div className={classNames.signin}>
         <Button
           className={`button has-text-white ${classNames.googleBtn}`}

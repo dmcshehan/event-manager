@@ -11,7 +11,7 @@ import {
   closeDropdown,
 } from "../../store/actionCreators/dropdown";
 
-const { Brand, Burger, Menu, Container } = Navbar;
+const { Brand, Burger, Menu, Container, Item } = Navbar;
 
 export default function NavbarComp() {
   const dispatch = useDispatch();
@@ -57,9 +57,11 @@ export default function NavbarComp() {
                 </div>
               </>
             ) : (
-              <Link to='/signin' className='button is-primary'>
-                Login
-              </Link>
+              <div className='navbar-item'>
+                <Link to='/signin' className='button is-primary'>
+                  Login
+                </Link>
+              </div>
             )}
           </Container>
         </Menu>

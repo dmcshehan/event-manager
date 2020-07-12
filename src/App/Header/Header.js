@@ -17,13 +17,14 @@ function Header(props) {
           <Body>
             <Container>
               <Heading
+                size={1}
                 className={`${classNames.title} has-text-centered has-text-white`}
               >
                 Plan Your Events
               </Heading>
               <Heading
                 subtitle
-                size={4}
+                size={3}
                 className={`${classNames.subTitle} has-text-centered has-text-white`}
               >
                 With Easy To Use UI

@@ -9,6 +9,7 @@ import classNames from "./App.module.css";
 import useIsLoggedIn from "../hooks/useIsLoggedIn";
 
 //components
+import Home from "./Home/Home";
 import Header from "./Header/Header";
 import NavBar from "./Navbar/Navbar";
 import DropDown from "./Dropdown/Dropdown";
@@ -45,12 +46,12 @@ export default function App() {
       <Router>
         <div className={classNames.app}>
           <NavBar />
-          {!isLoggedIn ? <Header /> : null}
           <EventModal />
           <InviteeModal />
           <DropDown />
 
           <Switch>
+            <Route exact path='/' component={Home} />
             <Route exact path='/signin' component={Signin} />
             <Route exact path='/dashboard' component={Dashboard} />
             <Route exact path='/intro' component={EventIntro} />
