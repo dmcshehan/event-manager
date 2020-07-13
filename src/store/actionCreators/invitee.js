@@ -90,8 +90,7 @@ function deleteInvitee(inviteeId) {
   return (dispatch, getState) => {
     const { selectedEvent } = getState().eventInfo;
 
-    var query = db
-      .collection("events")
+    db.collection("events")
       .doc(selectedEvent._id)
       .collection("invitees")
       .doc(inviteeId)

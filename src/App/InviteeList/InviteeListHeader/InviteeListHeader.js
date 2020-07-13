@@ -11,7 +11,7 @@ export default function InviteeListHeader({ title, count }) {
     <Header>
       <Title>{title}</Title>
       <Icon>
-        <span class='tag is-info is-medium'>Invitees : {count}</span>
+        <span className='tag is-info is-medium'>Invitees : {count}</span>
       </Icon>
     </Header>
   );

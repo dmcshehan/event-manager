@@ -6,7 +6,7 @@ export default function FeatureBox({ feature, description, thumb }) {
       <article className='media'>
         <div className='media-left'>
           <figure className='image is-128x128'>
-            <img src={thumb} alt='Image' />
+            <img src={thumb} alt='thumbnail' />
           </figure>
         </div>
         <div className='media-content'>

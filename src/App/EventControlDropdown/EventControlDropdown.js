@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { deleteEvent } from "../../store/actionCreators/event";
+import {
+  deleteEvent,
+  setUpdatableEvent,
+} from "../../store/actionCreators/event";
 
 export default function EventControlDropdown({ _id }) {
   const dispatch = useDispatch();
@@ -17,6 +20,11 @@ export default function EventControlDropdown({ _id }) {
     ) {
       dispatch(deleteEvent(_id));
     }
+  }
+
+  function onUpdateEvent(event) {
+    event.stopPropagation();
+    dispatch(setUpdatableEvent(_id));
   }
 
   return (
@@ -35,7 +43,7 @@ export default function EventControlDropdown({ _id }) {
         </div>
         <div className='dropdown-menu' id='dropdown-menu' role='menu'>
           <div className='dropdown-content'>
-            <a href='#' className='dropdown-item'>
+            <a href='#' className='dropdown-item' onClick={onUpdateEvent}>
               Update Event
             </a>
             <a href='#' className='dropdown-item' onClick={onDeleteEvent}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import signUpUserWithProvider from "../../auth/signupUserWithProvider";
@@ -14,9 +14,6 @@ export default function Signup() {
   function handleSignupWith(type) {
     signUpUserWithProvider(type);
   }
-  useEffect(() => {
-    console.log("Signin.js", user);
-  }, [user]);
 
   return user ? (
     <Redirect to='/intro' />

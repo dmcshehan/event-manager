@@ -4,21 +4,21 @@ import classNames from "./Navbar.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import Logo from "../Logo/Logo";
 import Navbar from "react-bulma-components/lib/components/navbar";
-import GridContainer from "react-bulma-components/lib/components/container";
 
 import {
   openDropdown,
   closeDropdown,
 } from "../../store/actionCreators/dropdown";
 
-const { Brand, Burger, Menu, Container, Item } = Navbar;
+const { Brand, Burger, Menu, Container } = Navbar;
 
 export default function NavbarComp() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const { isDropdownOpen } = useSelector((state) => state.dropDown);
 
-  function toggleDropdown() {
+  function toggleDropdown(event) {
+    event.stopPropagation();
     if (isDropdownOpen) {
       return dispatch(closeDropdown());
     }

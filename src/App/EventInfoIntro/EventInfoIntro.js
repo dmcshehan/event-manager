@@ -18,7 +18,7 @@ export default function EventInfo() {
             Select an Event from your list!
           </h2>
           <figure className={`image ${classNames.image}`}>
-            <img src={calendar} />
+            <img src={calendar} alt='calendar' />
           </figure>
         </Content>
       </Card>

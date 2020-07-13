@@ -19,6 +19,7 @@ import Footer from "./Footer/Footer";
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
 import { fetchEvents } from "../store/actionCreators/event";
+import { closeDropdown } from "../store/actionCreators/dropdown";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -36,10 +37,17 @@ export default function App() {
     });
   });
 
+  function handleBackgroundClick() {
+    dispatch(closeDropdown());
+  }
+
   return (
     <React.StrictMode>
       <Router>
-        <div className={`card ${classNames.app}`}>
+        <div
+          className={`card ${classNames.app}`}
+          onClick={handleBackgroundClick}
+        >
           <NavBar />
           <div className='card-content'>
             <EventModal />

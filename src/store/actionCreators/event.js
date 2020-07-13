@@ -1,8 +1,11 @@
 import { db } from "../../auth/firebase";
 import { FETCH_EVENTS_SUCCESS, CLEAR_EVENTS } from "../actionTypes/event";
 
+import { SET_UPDATABLE_EVENT } from "../actionTypes/eventAction";
+
 import { closeModal } from "./modal";
 import { clearSelectedEvent } from "./eventInfo";
+import { clearUpdatableEvent } from "./eventAction";
 
 function onFetchEventsSuccess(events) {
   return {
@@ -48,7 +51,7 @@ function deleteEvent(eventId) {
       .doc(eventId)
       .delete()
       .then(function () {
-        console.error("Deleted");
+        console.log("Deleted");
       })
       .catch(function (error) {
         console.error("Error deleting document: ", error);
@@ -91,4 +94,49 @@ function clearEvents() {
   };
 }
 
-export { addEvent, fetchEvents, clearEvents, deleteEvent };
+function updateEvent(eventInfo) {
+  return function (dispatch, getState) {
+    return new Promise(function (resolve, reject) {
+      db.collection("events")
+        .doc(eventInfo._id)
+        .update({
+          ...eventInfo,
+        })
+        .then(function () {
+          resolve("update");
+          dispatch(closeModal());
+          dispatch(clearUpdatableEvent());
+        })
+        .catch(function (error) {
+          console.error("Error updating document: ", error);
+        });
+    });
+  };
+}
+
+function onsetUpdatableEvent(updatableEvent) {
+  return {
+    type: SET_UPDATABLE_EVENT,
+    payload: {
+      updatableEvent,
+    },
+  };
+}
+
+function setUpdatableEvent(eventId) {
+  return function (dispatch, getState) {
+    const { events } = getState().event;
+    const updatableEvent = events.find((event) => event._id === eventId);
+
+    dispatch(onsetUpdatableEvent(updatableEvent));
+  };
+}
+
+export {
+  addEvent,
+  fetchEvents,
+  clearEvents,
+  deleteEvent,
+  setUpdatableEvent,
+  updateEvent,
+};

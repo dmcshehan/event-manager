@@ -1,8 +1,5 @@
 import React from "react";
 
-import { useDispatch } from "react-redux";
-import { openEventModal } from "../../../store/actionCreators/modal";
-
 import Card from "react-bulma-components/lib/components/card";
 
 import AddEventButton from "../../AddEventButton/AddEventButton";
