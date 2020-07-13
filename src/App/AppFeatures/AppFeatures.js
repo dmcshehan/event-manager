@@ -12,7 +12,7 @@ export default function AppFeatures({ ...props }) {
 
   return (
     <div {...props}>
-      <div class='columns is-multiline'>{featureBoxes}</div>
+      <div className='columns is-multiline'>{featureBoxes}</div>
     </div>
   );
 }
