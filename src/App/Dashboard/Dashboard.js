@@ -18,13 +18,11 @@ export default function Dashboard() {
   const isLoggedIn = useIsLoggedIn();
 
   return isLoggedIn ? (
-    <section className={classNames.dashboard}>
-      <GridContainer fluid>
-        <Columns>
-          <EventMenu />
-          {selectedEvent ? <EventInfo /> : <EventInfoIntro />}
-        </Columns>
-      </GridContainer>
+    <section>
+      <Columns>
+        <EventMenu />
+        {selectedEvent ? <EventInfo /> : <EventInfoIntro />}
+      </Columns>
     </section>
   ) : (
     <Redirect to='/signin' />

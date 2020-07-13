@@ -5,7 +5,7 @@ import Columns from "react-bulma-components/lib/components/columns";
 import EventList from "../EventList/EventList";
 import EventMenuHeader from "./EventMenuHeader/EventMenuHeader";
 
-import classNames from "./EventMenu.module.css";
+import classNames from "./EventMenu.module.scss";
 
 const { Content } = Card;
 const { Column } = Columns;

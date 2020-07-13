@@ -1,6 +1,9 @@
+@import "../../scss/mixins.scss";
+
 .eventInfoIntro {
-  min-height: calc(100vh - 124px);
+  @include component_min_height();
 }
+
 .image {
   width: 50%;
   margin: 0 auto;

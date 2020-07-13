@@ -5,12 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import classNames from "./App.module.css";
 
-//hooks
-import useIsLoggedIn from "../hooks/useIsLoggedIn";
-
 //components
 import Home from "./Home/Home";
-import Header from "./Header/Header";
 import NavBar from "./Navbar/Navbar";
 import DropDown from "./Dropdown/Dropdown";
 import Signin from "./Signin/Signin";
@@ -18,6 +14,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import EventModal from "./EventModal/EventModal";
 import InviteeModal from "./InviteeModal/InviteeModal";
 import EventIntro from "./EventIntro/EventIntro";
+import Footer from "./Footer/Footer";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
@@ -25,8 +22,6 @@ import { fetchEvents } from "../store/actionCreators/event";
 
 export default function App() {
   const dispatch = useDispatch();
-
-  const isLoggedIn = useIsLoggedIn();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (loggedInUser) {
@@ -44,18 +39,21 @@ export default function App() {
   return (
     <React.StrictMode>
       <Router>
-        <div className={classNames.app}>
+        <div className={`card ${classNames.app}`}>
           <NavBar />
-          <EventModal />
-          <InviteeModal />
-          <DropDown />
+          <div className='card-content'>
+            <EventModal />
+            <InviteeModal />
+            <DropDown />
 
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/signin' component={Signin} />
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/intro' component={EventIntro} />
-          </Switch>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/signin' component={Signin} />
+              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/intro' component={EventIntro} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
       </Router>
     </React.StrictMode>

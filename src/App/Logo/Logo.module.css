@@ -1,9 +1,7 @@
 .logo {
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.04);
   padding: 6px 12px;
-  border-radius: 5px;
 }
 
 .logoTitle {

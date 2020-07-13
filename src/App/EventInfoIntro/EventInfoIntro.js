@@ -4,7 +4,7 @@ import Card from "react-bulma-components/lib/components/card";
 import Columns from "react-bulma-components/lib/components/columns";
 
 import calendar from "../../assets/images/calendar_pick.svg";
-import classNames from "./EventInfoIntro.module.css";
+import classNames from "./EventInfoIntro.module.scss";
 
 const { Column } = Columns;
 const { Content } = Card;

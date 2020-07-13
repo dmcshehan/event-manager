@@ -1,0 +1,3 @@
+@mixin component_min_height {
+  min-height: calc(100vh - 262px);
+}

@@ -26,46 +26,44 @@ export default function NavbarComp() {
   }
 
   return (
-    <GridContainer fluid className={classNames.navbarContainer}>
-      <Navbar>
-        <Brand>
-          <Link className='navbar-item' to='/'>
-            <Logo />
-          </Link>
-          <Burger />
-        </Brand>
+    <Navbar color='light'>
+      <Brand>
+        <Link className='navbar-item' to='/'>
+          <Logo />
+        </Link>
+        <Burger />
+      </Brand>
 
-        <Menu>
-          <Container position='end'>
-            {user ? (
-              <>
-                <div className='navbar-item'>
-                  <Link to='/dashboard'>Dashboard</Link>
-                </div>
-                <div className='navbar-item'>
-                  <figure className='image is-48x48'>
-                    <div
-                      onClick={toggleDropdown}
-                      className={`${classNames.imgBtn} ${
-                        isDropdownOpen ? classNames.border : ""
-                      }`}
-                      style={{
-                        backgroundImage: `url(${user.photoURL})`,
-                      }}
-                    ></div>
-                  </figure>
-                </div>
-              </>
-            ) : (
+      <Menu>
+        <Container position='end'>
+          {user ? (
+            <>
               <div className='navbar-item'>
-                <Link to='/signin' className='button is-primary'>
-                  Login
-                </Link>
+                <Link to='/dashboard'>Dashboard</Link>
               </div>
-            )}
-          </Container>
-        </Menu>
-      </Navbar>
-    </GridContainer>
+              <div className='navbar-item'>
+                <figure className='image is-48x48'>
+                  <div
+                    onClick={toggleDropdown}
+                    className={`${classNames.imgBtn} ${
+                      isDropdownOpen ? classNames.border : ""
+                    }`}
+                    style={{
+                      backgroundImage: `url(${user.photoURL})`,
+                    }}
+                  ></div>
+                </figure>
+              </div>
+            </>
+          ) : (
+            <div className='navbar-item'>
+              <Link to='/signin' className='button is-primary'>
+                Login
+              </Link>
+            </div>
+          )}
+        </Container>
+      </Menu>
+    </Navbar>
   );
 }

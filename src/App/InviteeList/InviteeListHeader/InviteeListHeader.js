@@ -1,7 +1,6 @@
 import React from "react";
 
 import Card from "react-bulma-components/lib/components/card";
-import Button from "react-bulma-components/lib/components/button";
 
 const { Header } = Card;
 
@@ -12,7 +11,7 @@ export default function InviteeListHeader({ title, count }) {
     <Header>
       <Title>{title}</Title>
       <Icon>
-        <Button>Invitees : {count}</Button>
+        <span class='tag is-info is-medium'>Invitees : {count}</span>
       </Icon>
     </Header>
   );

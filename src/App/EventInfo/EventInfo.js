@@ -14,7 +14,7 @@ import { selectEvent } from "../../store/actionCreators/eventInfo";
 //hooks
 import useHasInvitees from "../../hooks/useHasInvitees";
 
-import classNames from "./EventInfo.module.css";
+import classNames from "./EventInfo.module.scss";
 
 const { Content } = Card;
 const { Column } = Columns;

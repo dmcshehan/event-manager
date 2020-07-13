@@ -10,11 +10,13 @@ const { Title, Icon } = Header;
 
 export default function EventMenu() {
   const { selectedEvent } = useSelector((state) => state.eventInfo);
-  const { title } = selectedEvent;
+  const { title, venue } = selectedEvent;
 
   return (
     <Header>
-      <Title>{title}</Title>
+      <Title>
+        {title} @ {venue}
+      </Title>
       <Icon>
         <AddInviteeButton />
       </Icon>

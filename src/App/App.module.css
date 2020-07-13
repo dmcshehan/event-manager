@@ -1,11 +1,11 @@
 .app {
   position: relative;
 
-  border-radius: 0.35em;
+  width: 90%;
+  margin: 30px auto;
   background: #fcfcfc;
-  box-shadow: 0 0 26px rgba(0, 0, 0, 0.13);
 
   overflow: hidden;
 
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 }
