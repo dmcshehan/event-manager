@@ -3,6 +3,7 @@
   flex-direction: column;
 
   width: 400px;
+  min-height: 388px;
   margin: 0 auto;
   padding: 2rem 0.5rem;
 }
