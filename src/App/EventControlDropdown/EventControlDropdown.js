@@ -43,12 +43,24 @@ export default function EventControlDropdown({ _id }) {
         </div>
         <div className='dropdown-menu' id='dropdown-menu' role='menu'>
           <div className='dropdown-content'>
-            <a href='#' className='dropdown-item' onClick={onUpdateEvent}>
-              Update Event
-            </a>
-            <a href='#' className='dropdown-item' onClick={onDeleteEvent}>
-              Delete Event
-            </a>
+            <button
+              className='button is-white dropdown-item'
+              onClick={onUpdateEvent}
+            >
+              <span className='icon'>
+                <i className='far fa-edit'></i>
+              </span>
+              <span>Update Event</span>
+            </button>
+            <button
+              className='button is-white dropdown-item'
+              onClick={onDeleteEvent}
+            >
+              <span className='icon'>
+                <i className='far fa-trash-alt'></i>
+              </span>
+              <span>Delete Event</span>
+            </button>
           </div>
         </div>
       </div>
