@@ -10,7 +10,10 @@ const { Title, Icon } = Header;
 export default function EventMenuHeader() {
   return (
     <Header>
-      <Title size={3}>Events</Title>
+      <p className='card-header-title'>
+        <span className='title is-5'>Events</span>
+      </p>
+
       <Icon>
         <AddEventButton />
       </Icon>

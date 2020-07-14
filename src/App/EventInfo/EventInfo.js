@@ -8,6 +8,7 @@ import EventInfoHeader from "./EventInfoHeader/EventInfoHeader";
 import InviteeLists from "../InviteeLists/InviteeLists";
 import EventIntro from "../EventIntro/EventIntro";
 import InviteeIntro from "../InviteeIntro/InviteeIntro";
+import EventInfoSummary from "../EventInfoSummary/EventInfoSummary";
 
 //hooks
 import useHasInvitees from "../../hooks/useHasInvitees";
@@ -27,7 +28,9 @@ export default function EventInfo() {
         {selectedEvent ? (
           <>
             <EventInfoHeader />
+
             <Content>
+              <EventInfoSummary className={classNames.eventInfoSummary} />
               {hasInvitees ? <InviteeLists /> : <InviteeIntro />}
             </Content>
           </>

@@ -22,10 +22,10 @@ export default function InviteeLists() {
     <div>
       <Columns>
         <Column>
-          <InviteeList title='Confirmed' invitees={confirmed} />
+          <InviteeList title='✔️ Confirmed' invitees={confirmed} />
         </Column>
         <Column>
-          <InviteeList title='Not Confirmed' invitees={unconfirm} />
+          <InviteeList title='❌ Not Confirmed' invitees={unconfirm} />
         </Column>
       </Columns>
     </div>

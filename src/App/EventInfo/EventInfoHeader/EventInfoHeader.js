@@ -14,9 +14,9 @@ export default function EventMenu() {
 
   return (
     <Header>
-      <Title>
-        {title} @ {venue}
-      </Title>
+      <p className='card-header-title'>
+        <span className='title is-5'>{title}</span>
+      </p>
       <Icon>
         <AddInviteeButton />
       </Icon>
