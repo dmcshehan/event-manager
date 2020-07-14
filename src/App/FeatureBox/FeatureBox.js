@@ -13,6 +13,7 @@ export default function FeatureBox({ feature, description, thumb }) {
           <div className='content'>
             <p>
               <strong>{feature}</strong>
+              <br />
               {description}
             </p>
           </div>
