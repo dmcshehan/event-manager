@@ -10,8 +10,7 @@ import "firebase/firestore";
 
 var firebaseConfig = {
   apiKey: "AIzaSyCR7uRZFv6Tg-0MnY8Y50BwOk_wLGpDtmI",
-  //authDomain: "rsvp-90ab0.firebaseapp.com",
-  authDomain: "https://rspv-app.netlify.app/",
+  authDomain: "rsvp-90ab0.firebaseapp.com",
   databaseURL: "https://rsvp-90ab0.firebaseio.com",
   projectId: "rsvp-90ab0",
   storageBucket: "rsvp-90ab0.appspot.com",
