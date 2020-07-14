@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { openEventModal } from "../../store/actionCreators/modal";
 
-export default function AddEventButton({ ...props }) {
+export default function AddEventButton({ className, ...props }) {
   const dispatch = useDispatch();
 
   function openModal() {
@@ -11,7 +11,11 @@ export default function AddEventButton({ ...props }) {
   }
 
   return (
-    <button className='button is-success' onClick={openModal} {...props}>
+    <button
+      className={`button is-success ${className}`}
+      onClick={openModal}
+      {...props}
+    >
       Add Event
     </button>
   );
