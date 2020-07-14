@@ -7,7 +7,7 @@ export default function EventInfoSummary({ ...props }) {
   return (
     <div {...props}>
       <div className='card'>
-        <div class='card-content'>
+        <div className='card-content'>
           <div className='columns'>
             <div className='column'>
               <h3 className='title is-5'> 🏠 Venue : {venue}</h3>

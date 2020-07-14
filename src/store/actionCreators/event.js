@@ -6,6 +6,10 @@ import { SET_UPDATABLE_EVENT } from "../actionTypes/eventAction";
 import { closeModal } from "./modal";
 import { clearSelectedEvent } from "./eventInfo";
 import { clearUpdatableEvent } from "./eventAction";
+import {
+  displaySuccessNotification,
+  displayErrorNotification,
+} from "./notification";
 
 function onFetchEventsSuccess(events) {
   return {
@@ -30,10 +34,11 @@ function addEvent(eventInfo) {
         .then(function (docRef) {
           dispatch(closeModal());
           resolve(docRef.id);
-          console.log("Document written :", docRef.id);
+          dispatch(displaySuccessNotification("Event Successfully added!"));
         })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
+        .catch(function ({ message }) {
+          reject(message);
+          dispatch(displayErrorNotification(message));
         });
     });
   };
@@ -51,10 +56,10 @@ function deleteEvent(eventId) {
       .doc(eventId)
       .delete()
       .then(function () {
-        console.log("Deleted");
+        dispatch(displaySuccessNotification("Event Successfully delete!"));
       })
-      .catch(function (error) {
-        console.error("Error deleting document: ", error);
+      .catch(function ({ message }) {
+        dispatch(displayErrorNotification(message));
       });
   };
 }
@@ -106,9 +111,10 @@ function updateEvent(eventInfo) {
           resolve("update");
           dispatch(closeModal());
           dispatch(clearUpdatableEvent());
+          dispatch(displaySuccessNotification("Event Successfully updated!"));
         })
-        .catch(function (error) {
-          console.error("Error updating document: ", error);
+        .catch(function ({ message }) {
+          dispatch(displayErrorNotification(message));
         });
     });
   };

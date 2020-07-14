@@ -15,6 +15,7 @@ import EventModal from "./EventModal/EventModal";
 import InviteeModal from "./InviteeModal/InviteeModal";
 import EventIntro from "./EventIntro/EventIntro";
 import Footer from "./Footer/Footer";
+import Notification from "./Notification/Notification";
 
 //Actioncreators
 import { userLoginSuccess } from "../store/actionCreators/user";
@@ -53,6 +54,7 @@ export default function App() {
             <EventModal />
             <InviteeModal />
             <DropDown />
+            <Notification />
 
             <Switch>
               <Route exact path='/' component={Home} />

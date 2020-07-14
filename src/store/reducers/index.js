@@ -9,6 +9,7 @@ import dropdownReducer from "./dropdown";
 import eventInfoReducer from "./eventInfo";
 import inviteeReducer from "./invitee";
 import eventActionReducer from "./eventAction";
+import notificationReducer from "./notification";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   dropDown: dropdownReducer,
   eventInfo: eventInfoReducer,
   invitee: inviteeReducer,
+  notification: notificationReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

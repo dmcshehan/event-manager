@@ -1,4 +1,5 @@
 import { db } from "../../auth/firebase";
+
 import {
   SET_UPDATABLE_INVITEE,
   CLEAR_UPDATABLE_INVITEE,
@@ -6,6 +7,10 @@ import {
 } from "../actionTypes/invitee";
 
 import { closeModal } from "./modal";
+import {
+  displaySuccessNotification,
+  displayErrorNotification,
+} from "./notification";
 
 function onSetUpdatableInvitee(invitee) {
   return {
@@ -57,9 +62,10 @@ function updateInvitee(invitee) {
         .then(function () {
           resolve("updated");
           dispatch(clearUpdatableInvitee());
+          dispatch(displaySuccessNotification("Invitee Successfully updated!"));
         })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
+        .catch(function ({ message }) {
+          dispatch(displayErrorNotification(message));
         });
     });
   };
@@ -78,9 +84,10 @@ function addInvitee(invitee) {
         .then(function (docRef) {
           dispatch(closeModal());
           resolve(docRef.id);
+          dispatch(displaySuccessNotification("Invitee Successfully added!"));
         })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
+        .catch(function ({ message }) {
+          dispatch(displayErrorNotification(message));
         });
     });
   };
@@ -96,10 +103,10 @@ function deleteInvitee(inviteeId) {
       .doc(inviteeId)
       .delete()
       .then(function () {
-        console.log("Document successfully deleted!");
+        dispatch(displaySuccessNotification("Invitee Successfully deleted!"));
       })
-      .catch(function (error) {
-        console.error("Error removing document: ", error);
+      .catch(function ({ message }) {
+        dispatch(displayErrorNotification(message));
       });
   };
 }
