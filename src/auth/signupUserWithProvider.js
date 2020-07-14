@@ -36,5 +36,6 @@ export default function signUpUser(type) {
     })
     .catch(function (error) {
       // Handle Errors here.
+      console.log(error.code, error.message);
     });
 }
