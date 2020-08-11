@@ -1,3 +1,7 @@
-### This is an app where you can manage your events.
+### RSVP
 
-[Live Demo](https://rspv-app.netlify.app/)
+An event management application built with React,Redux and Firebase. Users can add Events and add Invitees to the events.
+
+![RSVP App Home page](https://i.imgur.com/eVEE0zm.png)
+
+
